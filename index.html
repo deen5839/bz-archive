@@ -66,24 +66,23 @@
       background: #C8102E;
     }
 
-    /* 電腦版大氣滿版封面（直接使用 images 資料夾內的高畫質視覺圖） */
+    /* 強制設定電腦版封面圖（直接使用 images 裡的雙人視覺照） */
     .hero-cover-banner {
-      min-height: 85vh;
-      background-color: #140306;
+      min-height: 82vh !important;
+      background-color: #140306 !important;
       background-image:
         linear-gradient(to top, #070707 0%, rgba(7, 7, 7, 0.72) 28%, rgba(7, 7, 7, 0.25) 62%, rgba(7, 7, 7, 0.65) 100%),
-        radial-gradient(circle at 22% 48%, rgba(200, 16, 46, 0.28) 0%, transparent 58%),
-        url('images/bz_art202501.avif');
-      background-size: cover;
-      background-position: center 20%;
+        url('images/bz_art202501.avif') !important;
+      background-size: cover !important;
+      background-position: center 20% !important;
+      background-repeat: no-repeat !important;
     }
 
-    /* 手機版（寬度 640px 以下）縮小封面高度，完整呈現雙人視覺不超出 */
+    /* 手機版（寬度 640px 以下）強制縮小高度，不超出螢幕 */
     @media (max-width: 640px) {
       .hero-cover-banner {
-        min-height: 46vh;
-        background-size: cover;
-        background-position: center 15%;
+        min-height: 42vh !important;
+        background-position: center 15% !important;
       }
     }
     /* Red gradient glow on "ARCHIVE" in Hero Title */
