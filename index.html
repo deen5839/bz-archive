@@ -79,7 +79,14 @@
       background-position: center 20%;
       background-repeat: no-repeat;
     }
-
+/* 手機版（寬度 640px 以下）縮小封面高度，讓整張橫幅完整呈現不超出 */
+    @media (max-width: 640px) {
+      .hero-cover-banner {
+        min-height: 44vh;
+        background-size: cover;
+        background-position: center top;
+      }
+    }
     /* Red gradient glow on "ARCHIVE" in Hero Title */
     .archive-glow-text {
       background: linear-gradient(180deg, #FF5A70 0%, #E61938 48%, #99081F 100%);
@@ -129,7 +136,7 @@
 
   <!-- ==================== FIXED TOP NAVIGATION BAR (bz-vermillion.com style) ==================== -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-[#070707]/90 backdrop-blur-md border-b border-jet-700">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-14 pb-8 sm:pt-32 sm:pb-20 relative z-10">
       <!-- Top-Left Exact Square B'z MARK (54px x 54px, 0px radius, 2px solid #C8102E) -->
       <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
         <div
