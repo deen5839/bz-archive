@@ -132,31 +132,27 @@
 </head>
 <body class="antialiased selection:bg-vermillion selection:text-white">
 
-  <!-- ==================== FIXED TOP NAVIGATION BAR (bz-vermillion.com style) ==================== -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-[#070707]/90 backdrop-blur-md border-b border-jet-700">
-    <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-24 pb-8 sm:pt-36 sm:pb-20 relative z-10">
-      <!-- Top-Left Exact Square B'z MARK (54px x 54px, 0px radius, 2px solid #C8102E) -->
-      <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
+  <!-- ==================== FIXED TOP NAVIGATION BAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#070707]/95 backdrop-blur-md border-b border-jet-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-20 flex items-center justify-between">
+      <!-- Top-Left Square B'z MARK -->
+      <a href="#top" class="flex items-center gap-2.5 sm:gap-3.5 group focus:outline-none">
         <div
-          style="width: 54px; height: 54px; aspect-ratio: 1 / 1; border-radius: 0px; border: 2px solid #C8102E;"
-          class="bg-[#070707]/90 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#C8102E]/15 group-hover:shadow-[0_0_18px_rgba(200,16,46,0.5)]"
+          style="border-radius: 0px; border: 2px solid #C8102E;"
+          class="w-9 h-9 sm:w-[54px] sm:h-[54px] bg-[#070707]/90 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#C8102E]/15"
         >
-          <!-- Custom Iconic Square-Proportioned B'z Geometric SVG Mark -->
-          <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="B'z Official Style Mark">
-            <!-- Bold Condensed Geometric "B" -->
+          <svg class="w-7 h-7 sm:w-[42px] sm:h-[42px]" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="B'z Official Style Mark">
             <path d="M12 16H38C46.5 16 51.5 20.5 51.5 28.5C51.5 34.5 48.2 38.5 43.2 40.3C49.5 42.1 53.5 47 53.5 54.5C53.5 64 47.5 69.5 37.5 69.5H12V16ZM24.5 36.5H34.5C38.2 36.5 40.2 34.5 40.2 31C40.2 27.5 38.2 25.8 34.5 25.8H24.5V36.5ZM24.5 59.5H35.5C39.6 59.5 41.8 57.3 41.8 53.3C41.8 49.3 39.4 47.2 35.2 47.2H24.5V59.5Z" fill="#C8102E"/>
-            <!-- Signature Sharp Diagonal Red Apostrophe -->
             <polygon points="62,15 72,15 62,36 54,36" fill="#C8102E"/>
-            <!-- Bold Condensed "z" -->
             <path d="M56 44H88V53.5L69.5 75.5H88.5V85H55V75.5L73.5 53.5H56V44Z" fill="#C8102E"/>
           </svg>
         </div>
 
         <div class="flex flex-col">
-          <span class="font-condensed font-bold text-white text-base sm:text-lg tracking-[0.22em] uppercase leading-none">
+          <span class="font-condensed font-bold text-white text-sm sm:text-lg tracking-[0.2em] uppercase leading-none">
             VERMILLION ARCHIVE
           </span>
-          <span class="text-[10px] sm:text-[11px] text-zinc-400 font-display tracking-[0.18em] uppercase mt-1.5">
+          <span class="hidden sm:block text-[11px] text-zinc-400 font-display tracking-[0.18em] uppercase mt-1.5">
             1988 — 40TH ANNIVERSARY TRIBUTE
           </span>
         </div>
@@ -173,24 +169,23 @@
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button id="mobileMenuBtn" aria-label="開啟導覽選單" class="md:hidden p-2.5 border border-jet-700 bg-jet-900 text-zinc-200 hover:text-white hover:border-vermillion transition-colors">
+      <button id="mobileMenuBtn" aria-label="開啟導覽選單" class="md:hidden p-2 border border-jet-700 bg-jet-900 text-zinc-200 hover:text-white hover:border-vermillion transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
       </button>
     </div>
 
-    <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="hidden md:hidden bg-[#070707] border-b border-jet-700 px-4 py-4 space-y-1">
-      <a href="#topic" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">TOPIC</a>
-      <a href="#chronicle" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">CHRONICLE</a>
-      <a href="#biography" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">BIOGRAPHY</a>
-      <a href="#discography" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">DISCOGRAPHY</a>
-      <a href="#gallery" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">GALLERY</a>
-      <a href="#link" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">LINK</a>
+    <!-- Mobile Dropdown Navigation (預設 hidden 收合) -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#070707] border-b border-jet-700 px-4 py-3 space-y-1">
+      <a href="#topic" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">TOPIC</a>
+      <a href="#chronicle" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">CHRONICLE</a>
+      <a href="#biography" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">BIOGRAPHY</a>
+      <a href="#discography" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">DISCOGRAPHY</a>
+      <a href="#gallery" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">GALLERY</a>
+      <a href="#link" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">LINK</a>
     </div>
   </header>
-
   <main id="top" class="pt-20">
     <!-- ==================== FULL-BLEED HERO COVER BANNER ==================== -->
     <section class="relative hero-cover-banner w-full border-b border-jet-700 flex flex-col justify-end">
