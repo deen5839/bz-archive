@@ -130,34 +130,22 @@
   <!-- ==================== FIXED TOP NAVIGATION BAR (bz-vermillion.com style) ==================== -->
   <header class="fixed top-0 left-0 right-0 z-40 bg-[#070707]/90 backdrop-blur-md border-b border-jet-700">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <!-- 仿 B'z 官網霸氣幾何風格 Logo SVG -->
-<a href="#" class="bz-logo-link" aria-label="B'z Official Style Logo">
-  <svg width="160" height="75" viewBox="0 0 220 105" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- B 字母：厚實、帶有一點未來感的幾何切角 -->
-    <path d="M12 15H68C86 15 96 24 96 37C96 46 90 52 81 55C93 58 100 66 100 77C100 92 88 100 68 100H12V15ZM36 47H62C70 47 74 43 74 38C74 33 70 29 62 29H36V47ZM36 85H65C74 85 78 81 78 75C78 69 74 65 65 65H36V85Z" fill="#FFFFFF"/>
-    
-    <!-- 撇號 (')：銳利的斜切平行四邊形 -->
-    <polygon points="116,15 136,15 125,45 108,45" fill="#FFFFFF"/>
-    
-    <!-- Z 字母：放大加高 (Y從8到102)、霸氣橫跨右側 -->
-    <polygon points="138,8 212,8 212,26 165,82 214,82 214,102 132,102 132,84 179,28 138,28" fill="#FFFFFF"/>
-  </svg>
-</a>
-
-<style>
-  body {
-    background-color: #000000; /* 搭配官網經典純黑背景 */
-  }
-  .bz-logo-link {
-    display: inline-block;
-    transition: transform 0.25s ease, filter 0.25s ease;
-  }
-  /* 滑鼠移過去時加上微幅放大與白光效果，更有搖滾官網的質感 */
-  .bz-logo-link:hover {
-    transform: scale(1.04);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
-  }
-</style>
+      <!-- Top-Left Exact Square B'z MARK (54px x 54px, 0px radius, 2px solid #C8102E) -->
+      <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
+        <div
+          style="width: 54px; height: 54px; aspect-ratio: 1 / 1; border-radius: 0px; border: 2px solid #C8102E;"
+          class="bg-[#070707]/90 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#C8102E]/15 group-hover:shadow-[0_0_18px_rgba(200,16,46,0.5)]"
+        >
+          <!-- Custom Iconic Square-Proportioned B'z Geometric SVG Mark -->
+          <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="B'z Official Style Mark">
+            <!-- Bold Condensed Geometric "B" -->
+            <path d="M12 16H38C46.5 16 51.5 20.5 51.5 28.5C51.5 34.5 48.2 38.5 43.2 40.3C49.5 42.1 53.5 47 53.5 54.5C53.5 64 47.5 69.5 37.5 69.5H12V16ZM24.5 36.5H34.5C38.2 36.5 40.2 34.5 40.2 31C40.2 27.5 38.2 25.8 34.5 25.8H24.5V36.5ZM24.5 59.5H35.5C39.6 59.5 41.8 57.3 41.8 53.3C41.8 49.3 39.4 47.2 35.2 47.2H24.5V59.5Z" fill="#C8102E"/>
+            <!-- Signature Sharp Diagonal Red Apostrophe -->
+            <polygon points="62,15 72,15 62,36 54,36" fill="#C8102E"/>
+            <!-- Bold Condensed "z" -->
+            <path d="M56 44H88V53.5L69.5 75.5H88.5V85H55V75.5L73.5 53.5H56V44Z" fill="#C8102E"/>
+          </svg>
+        </div>
 
         <div class="flex flex-col">
           <span class="font-condensed font-bold text-white text-base sm:text-lg tracking-[0.22em] uppercase leading-none">
