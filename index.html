@@ -1559,5 +1559,30 @@
       pageTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     });
   </script>
+<!-- Image Lightbox Modal -->
+<div id="imageLightbox" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm p-4">
+  <div class="relative max-w-5xl w-full flex flex-col items-center" onclick="event.stopPropagation()">
+    <button onclick="closeLightbox()" class="self-end mb-2 px-3 py-1 bg-vermillion text-white font-condensed text-xs tracking-widest uppercase">
+      CLOSE ✕
+    </button>
+    <img id="lightboxImg" src="" alt="" class="max-h-[80vh] w-auto object-contain border border-jet-700 bg-black" />
+    <p id="lightboxCaption" class="text-zinc-200 font-condensed tracking-wider text-sm mt-3 text-center"></p>
+  </div>
+</div>
+
+<script>
+  function openLightbox(src, caption) {
+    const box = document.getElementById('imageLightbox');
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxCaption').textContent = caption;
+    box.classList.remove('hidden');
+    box.classList.add('flex');
+  }
+  function closeLightbox() {
+    const box = document.getElementById('imageLightbox');
+    box.classList.add('hidden');
+    box.classList.remove('flex');
+  }
+</script>
 </body>
 </html>
