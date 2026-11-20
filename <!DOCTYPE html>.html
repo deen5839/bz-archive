@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>B'z VERMILLION ARCHIVE | 經典搖滾典藏與樂評紀念館</title>
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Montserrat & Oswald for bz-vermillion uppercase headers + Noto Sans TC -->
+  <!-- Google Fonts: Oswald, Montserrat & Noto Sans TC -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;0,900;1,800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;0,900;1,800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -24,9 +24,9 @@
             },
             jet: {
               950: '#050505',
-              900: '#0A0A0A',
-              850: '#111111',
-              800: '#171717',
+              900: '#070707',
+              850: '#0F0F0F',
+              800: '#161616',
               700: '#262626'
             },
             gold: {
@@ -45,7 +45,7 @@
   </script>
 
   <style>
-    /* Custom scrollbar & bz-vermillion inspired visual accents */
+    /* Pure dark theme & sharp square corners matching bz-vermillion.com */
     body {
       background-color: #070707;
       color: #E4E4E7;
@@ -57,28 +57,41 @@
       width: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #0A0A0A;
+      background: #070707;
     }
     ::-webkit-scrollbar-thumb {
-      background: #2A2A2A;
-      border-radius: 4px;
+      background: #262626;
     }
     ::-webkit-scrollbar-thumb:hover {
       background: #C8102E;
     }
 
-    /* Stage Spotlight & Subtle Grid Pattern matching official dark rock aesthetic */
-    .hero-stage-bg {
-      background:
-        radial-gradient(circle at 75% 25%, rgba(200, 16, 46, 0.24) 0%, rgba(200, 16, 46, 0.05) 38%, transparent 70%),
-        radial-gradient(circle at 18% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-        linear-gradient(135deg, #090909 0%, #121212 50%, #070707 100%);
+    /* Full-bleed Hero Cover with local image 20250116-bz-99.jpg & dark crimson fallback */
+    .hero-cover-banner {
+      min-height: 85vh;
+      background-color: #140306;
+      background-image:
+        linear-gradient(to top, #070707 0%, rgba(7, 7, 7, 0.72) 26%, rgba(7, 7, 7, 0.22) 60%, rgba(7, 7, 7, 0.65) 100%),
+        radial-gradient(circle at 20% 50%, rgba(200, 16, 46, 0.18) 0%, transparent 55%),
+        url('./20250116-bz-99.jpg');
+      background-size: cover;
+      background-position: center 20%;
+      background-repeat: no-repeat;
     }
 
-    .grid-overlay {
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-      background-size: 48px 48px;
+    /* Red gradient glow on "ARCHIVE" in Hero Title */
+    .archive-glow-text {
+      background: linear-gradient(180deg, #FF5A70 0%, #E61938 48%, #99081F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 22px rgba(200, 16, 46, 0.55));
+    }
+
+    /* Subtle dark rock stage texture for TOPIC! section */
+    .topic-stage-bg {
+      background:
+        radial-gradient(circle at 80% 20%, rgba(200, 16, 46, 0.18) 0%, transparent 55%),
+        linear-gradient(180deg, #070707 0%, #0D0D0D 100%);
     }
 
     .vermillion-slash {
@@ -87,45 +100,57 @@
     .vermillion-slash::after {
       content: '';
       display: block;
-      width: 44px;
+      width: 48px;
       height: 3px;
       background: #C8102E;
       margin-top: 10px;
     }
 
     .card-hover {
-      transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
     }
     .card-hover:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       border-color: #C8102E;
-      box-shadow: 0 10px 28px -8px rgba(200, 16, 46, 0.28);
+      box-shadow: 0 10px 26px -8px rgba(200, 16, 46, 0.35);
     }
 
-    @keyframes slowSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    @keyframes slowBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
     }
-    .vinyl-spin {
-      animation: slowSpin 28s linear infinite;
+    .scroll-cue {
+      animation: slowBounce 2.2s infinite ease-in-out;
     }
   </style>
 </head>
 <body class="antialiased selection:bg-vermillion selection:text-white">
 
-  <!-- ==================== STICKY HEADER (bz-vermillion.com style) ==================== -->
-  <header class="sticky top-0 z-40 bg-jet-950/95 backdrop-blur-md border-b border-jet-700">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
-      <!-- Brand Emblem -->
-      <a href="#top" class="flex items-center gap-3 group focus:outline-none">
-        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded bg-vermillion flex items-center justify-center shadow-lg shadow-vermillion/30 group-hover:bg-vermillion-bright transition-colors">
-          <span class="font-display font-black italic text-white text-xl sm:text-2xl tracking-tighter">B'z</span>
+  <!-- ==================== FIXED TOP NAVIGATION BAR (bz-vermillion.com style) ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#070707]/90 backdrop-blur-md border-b border-jet-700">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Top-Left Exact Square B'z MARK (54px x 54px, 0px radius, 2px solid #C8102E) -->
+      <a href="#top" class="flex items-center gap-3.5 group focus:outline-none">
+        <div
+          style="width: 54px; height: 54px; aspect-ratio: 1 / 1; border-radius: 0px; border: 2px solid #C8102E;"
+          class="bg-[#070707]/90 flex items-center justify-center shrink-0 transition-all duration-200 group-hover:bg-[#C8102E]/15 group-hover:shadow-[0_0_18px_rgba(200,16,46,0.5)]"
+        >
+          <!-- Custom Iconic Square-Proportioned B'z Geometric SVG Mark -->
+          <svg width="42" height="42" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="B'z Official Style Mark">
+            <!-- Bold Condensed Geometric "B" -->
+            <path d="M12 16H38C46.5 16 51.5 20.5 51.5 28.5C51.5 34.5 48.2 38.5 43.2 40.3C49.5 42.1 53.5 47 53.5 54.5C53.5 64 47.5 69.5 37.5 69.5H12V16ZM24.5 36.5H34.5C38.2 36.5 40.2 34.5 40.2 31C40.2 27.5 38.2 25.8 34.5 25.8H24.5V36.5ZM24.5 59.5H35.5C39.6 59.5 41.8 57.3 41.8 53.3C41.8 49.3 39.4 47.2 35.2 47.2H24.5V59.5Z" fill="#C8102E"/>
+            <!-- Signature Sharp Diagonal Red Apostrophe -->
+            <polygon points="62,15 72,15 62,36 54,36" fill="#C8102E"/>
+            <!-- Bold Condensed "z" -->
+            <path d="M56 44H88V53.5L69.5 75.5H88.5V85H55V75.5L73.5 53.5H56V44Z" fill="#C8102E"/>
+          </svg>
         </div>
+
         <div class="flex flex-col">
-          <span class="font-display font-extrabold text-white text-sm sm:text-base tracking-[0.2em] uppercase leading-none">
+          <span class="font-condensed font-bold text-white text-base sm:text-lg tracking-[0.22em] uppercase leading-none">
             VERMILLION ARCHIVE
           </span>
-          <span class="text-[11px] text-zinc-400 tracking-widest mt-1">
+          <span class="text-[10px] sm:text-[11px] text-zinc-400 font-display tracking-[0.18em] uppercase mt-1.5">
             1988 — 40TH ANNIVERSARY TRIBUTE
           </span>
         </div>
@@ -133,15 +158,15 @@
 
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center gap-7">
-        <a href="#topic" class="font-display text-xs font-bold tracking-[0.18em] text-zinc-300 hover:text-vermillion-bright transition-colors uppercase">TOPIC</a>
-        <a href="#chronicle" class="font-display text-xs font-bold tracking-[0.18em] text-zinc-300 hover:text-vermillion-bright transition-colors uppercase">CHRONICLE</a>
-        <a href="#biography" class="font-display text-xs font-bold tracking-[0.18em] text-zinc-300 hover:text-vermillion-bright transition-colors uppercase">BIOGRAPHY</a>
-        <a href="#discography" class="font-display text-xs font-bold tracking-[0.18em] text-zinc-300 hover:text-vermillion-bright transition-colors uppercase">DISCOGRAPHY</a>
-        <a href="#link" class="font-display text-xs font-bold tracking-[0.18em] text-zinc-300 hover:text-vermillion-bright transition-colors uppercase">LINK</a>
+        <a href="#topic" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">TOPIC</a>
+        <a href="#chronicle" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">CHRONICLE</a>
+        <a href="#biography" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">BIOGRAPHY</a>
+        <a href="#discography" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">DISCOGRAPHY</a>
+        <a href="#link" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">LINK</a>
       </nav>
 
       <!-- Mobile Menu Button -->
-      <button id="mobileMenuBtn" aria-label="開啟導覽選單" class="md:hidden p-2.5 rounded border border-jet-700 text-zinc-300 hover:text-white hover:border-vermillion transition-colors">
+      <button id="mobileMenuBtn" aria-label="開啟導覽選單" class="md:hidden p-2.5 border border-jet-700 bg-jet-900 text-zinc-200 hover:text-white hover:border-vermillion transition-colors">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -149,172 +174,169 @@
     </div>
 
     <!-- Mobile Dropdown Navigation -->
-    <div id="mobileMenu" class="hidden md:hidden bg-jet-900 border-b border-jet-700 px-4 py-4 space-y-2">
-      <a href="#topic" class="mobile-nav-link block py-2.5 px-3 rounded font-display text-xs font-bold tracking-[0.2em] text-zinc-200 hover:bg-vermillion/20 hover:text-white uppercase">TOPIC</a>
-      <a href="#chronicle" class="mobile-nav-link block py-2.5 px-3 rounded font-display text-xs font-bold tracking-[0.2em] text-zinc-200 hover:bg-vermillion/20 hover:text-white uppercase">CHRONICLE</a>
-      <a href="#biography" class="mobile-nav-link block py-2.5 px-3 rounded font-display text-xs font-bold tracking-[0.2em] text-zinc-200 hover:bg-vermillion/20 hover:text-white uppercase">BIOGRAPHY</a>
-      <a href="#discography" class="mobile-nav-link block py-2.5 px-3 rounded font-display text-xs font-bold tracking-[0.2em] text-zinc-200 hover:bg-vermillion/20 hover:text-white uppercase">DISCOGRAPHY</a>
-      <a href="#link" class="mobile-nav-link block py-2.5 px-3 rounded font-display text-xs font-bold tracking-[0.2em] text-zinc-200 hover:bg-vermillion/20 hover:text-white uppercase">LINK</a>
+    <div id="mobileMenu" class="hidden md:hidden bg-[#070707] border-b border-jet-700 px-4 py-4 space-y-1">
+      <a href="#topic" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">TOPIC</a>
+      <a href="#chronicle" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">CHRONICLE</a>
+      <a href="#biography" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">BIOGRAPHY</a>
+      <a href="#discography" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">DISCOGRAPHY</a>
+      <a href="#link" class="mobile-nav-link block py-3 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">LINK</a>
     </div>
   </header>
 
-  <main id="top">
-    <!-- ==================== HERO TOPIC! CAROUSEL (bz-vermillion.com signature) ==================== -->
-    <section id="topic" class="relative hero-stage-bg grid-overlay border-b border-jet-700 overflow-hidden">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 relative z-10">
-        <!-- Section Eyebrow -->
-        <div class="flex items-center justify-between mb-6 sm:mb-8">
-          <div class="flex items-center gap-3">
-            <span class="inline-block bg-vermillion text-white font-display font-black italic text-xs sm:text-sm px-3 py-1 tracking-[0.18em] uppercase rounded-sm shadow">
+  <main id="top" class="pt-20">
+    <!-- ==================== FULL-BLEED HERO COVER BANNER (20250116-bz-99.jpg) ==================== -->
+    <section class="relative hero-cover-banner w-full border-b border-jet-700 flex flex-col justify-end">
+      <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20 pt-32 relative z-10">
+        <!-- Subtle top tag -->
+        <div class="inline-flex items-center gap-2.5 bg-[#070707]/85 border-l-4 border-vermillion px-3.5 py-1.5 mb-4">
+          <span class="font-condensed text-xs font-bold tracking-[0.24em] text-vermillion-bright uppercase">TAK MATSUMOTO &amp; KOSHI INABA</span>
+        </div>
+
+        <!-- Bold Display Typography at Bottom-Left -->
+        <h1 class="font-condensed font-bold text-4xl sm:text-6xl lg:text-7xl tracking-[0.04em] uppercase leading-none text-white drop-shadow-[0_4px_18px_rgba(0,0,0,0.9)]">
+          B'z <span class="archive-glow-text">VERMILLION ARCHIVE</span>
+        </h1>
+
+        <p class="font-condensed text-sm sm:text-lg font-semibold tracking-[0.28em] text-zinc-200 uppercase mt-3 sm:mt-4 drop-shadow">
+          1988 — 40TH ANNIVERSARY TRIBUTE
+        </p>
+      </div>
+
+      <!-- Bottom-Center SCROLL DOWN Indicator & Bottom-Right Quick Jump -->
+      <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-5 flex items-center justify-between relative z-10">
+        <div class="hidden sm:block w-36"></div>
+        <a href="#topic" class="mx-auto font-condensed text-xs sm:text-sm font-semibold tracking-[0.25em] text-zinc-300 hover:text-white uppercase flex items-center gap-2 scroll-cue transition-colors">
+          SCROLL DOWN <span class="text-vermillion-bright">▽</span>
+        </a>
+        <div class="hidden sm:flex items-center gap-3 font-condensed text-xs tracking-widest text-zinc-400">
+          <a href="#discography" class="hover:text-vermillion-bright transition-colors uppercase">MY PICKS (34)</a>
+          <span>/</span>
+          <a href="https://www.bz-vermillion.com/" target="_blank" rel="noopener noreferrer" class="hover:text-vermillion-bright transition-colors uppercase">OFFICIAL</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 1: TOPIC! CAROUSEL & KEY RECORDS BAR ==================== -->
+    <section id="topic" class="topic-stage-bg border-b border-jet-700">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
+        <!-- Section Eyebrow + Slide Counter -->
+        <div class="flex items-center justify-between mb-8 pb-4 border-b border-jet-700">
+          <div class="flex items-center gap-3.5">
+            <span class="inline-block bg-vermillion text-white font-display font-black italic text-xs sm:text-sm px-3.5 py-1 tracking-[0.18em] uppercase">
               TOPIC!
             </span>
-            <span class="text-xs sm:text-sm text-zinc-400 font-display tracking-widest uppercase">
-              FEATURED HIGHLIGHTS &amp; PERSONAL NOTES
+            <span class="font-condensed text-xs sm:text-sm text-zinc-400 tracking-[0.22em] uppercase">
+              HIGHLIGHTS &amp; RECORD ARCHIVE
             </span>
           </div>
-          <!-- Slide Counter -->
-          <div class="font-condensed text-sm sm:text-base tracking-widest text-zinc-400">
+          <div class="font-condensed text-base sm:text-lg tracking-widest text-zinc-400">
             <span id="slideCurrent" class="text-white font-bold">01</span> / <span id="slideTotal">04</span>
           </div>
         </div>
 
-        <!-- Carousel Content Container -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[340px] sm:min-h-[360px]">
-          <!-- Left Text Area -->
-          <div class="lg:col-span-7 space-y-5" id="heroSlideContent">
+        <!-- Carousel Content Box -->
+        <div class="bg-jet-850 border border-jet-700 p-6 sm:p-10 lg:p-12">
+          <div id="heroSlideContent" class="space-y-5 min-h-[220px] flex flex-col justify-center">
             <!-- Dynamically populated by JS -->
           </div>
 
-          <!-- Right Decorative Vinyl / Stage Visual (Pure SVG, zero broken images) -->
-          <div class="lg:col-span-5 flex justify-center">
-            <div class="relative w-64 h-64 sm:w-80 sm:h-80 flex items-center justify-center">
-              <!-- Outer Vermillion Glow Ring -->
-              <div class="absolute inset-0 rounded-full border border-vermillion/40 animate-pulse"></div>
-              <div class="absolute inset-4 rounded-full border border-zinc-700/70"></div>
-              <!-- Spinning Vinyl Record Graphic -->
-              <svg class="w-56 h-56 sm:w-72 sm:h-72 vinyl-spin drop-shadow-2xl" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="120" cy="120" r="116" fill="#0D0D0D" stroke="#2B2B2B" stroke-width="2"/>
-                <circle cx="120" cy="120" r="98" stroke="#1E1E1E" stroke-width="1.5"/>
-                <circle cx="120" cy="120" r="82" stroke="#1A1A1A" stroke-width="1"/>
-                <circle cx="120" cy="120" r="66" stroke="#222222" stroke-width="1.5"/>
-                <circle cx="120" cy="120" r="50" stroke="#1C1C1C" stroke-width="1"/>
-                <!-- Subtle sheen -->
-                <path d="M120 4 A116 116 0 0 1 220 62 L120 120 Z" fill="rgba(255,255,255,0.03)"/>
-                <path d="M120 236 A116 116 0 0 1 20 178 L120 120 Z" fill="rgba(200,16,46,0.07)"/>
-                <!-- Center Vermillion Label -->
-                <circle cx="120" cy="120" r="38" fill="#C8102E"/>
-                <circle cx="120" cy="120" r="34" stroke="#F3E5AB" stroke-opacity="0.45" stroke-width="1"/>
-                <circle cx="120" cy="120" r="6" fill="#070707"/>
-              </svg>
-              <!-- Stationary Center Badge Overlay -->
-              <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
-                <span class="font-display font-black italic text-white text-2xl sm:text-3xl tracking-tighter drop-shadow">B'z</span>
-                <span id="vinylEraBadge" class="mt-9 bg-jet-950/90 border border-vermillion/70 text-gold-light font-display text-[10px] font-bold tracking-[0.2em] px-2.5 py-0.5 rounded uppercase">
-                  1988 - 2026
-                </span>
-              </div>
+          <!-- Sharp Square Carousel Controls -->
+          <div class="mt-8 pt-6 border-t border-jet-700 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <button id="prevSlideBtn" class="px-5 py-2.5 border border-jet-700 bg-jet-900 hover:border-vermillion hover:bg-vermillion text-xs font-condensed font-bold tracking-[0.2em] uppercase text-white transition-all">
+                ← PREVIOUS
+              </button>
+              <button id="nextSlideBtn" class="px-5 py-2.5 border border-jet-700 bg-jet-900 hover:border-vermillion hover:bg-vermillion text-xs font-condensed font-bold tracking-[0.2em] uppercase text-white transition-all">
+                NEXT →
+              </button>
             </div>
+            <div id="slideDots" class="flex items-center gap-2"></div>
           </div>
-        </div>
-
-        <!-- Carousel Controls (Previous / Dots / Next) -->
-        <div class="mt-8 pt-6 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <button id="prevSlideBtn" class="px-4 py-2.5 rounded border border-jet-700 bg-jet-900/90 hover:border-vermillion hover:bg-vermillion text-xs font-display font-bold tracking-[0.15em] uppercase text-white transition-all flex items-center gap-2">
-              <span>←</span> PREVIOUS
-            </button>
-            <button id="nextSlideBtn" class="px-4 py-2.5 rounded border border-jet-700 bg-jet-900/90 hover:border-vermillion hover:bg-vermillion text-xs font-display font-bold tracking-[0.15em] uppercase text-white transition-all flex items-center gap-2">
-              NEXT <span>→</span>
-            </button>
-          </div>
-
-          <!-- Pagination Dots -->
-          <div id="slideDots" class="flex items-center gap-2.5"></div>
         </div>
       </div>
 
-      <!-- Key Record Stats Strip (80M / 100M / 15+19 Million / RockWalk) -->
-      <div class="bg-jet-900/90 border-t border-jet-700">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          <div class="border-l-2 border-vermillion pl-3.5">
-            <p class="text-[11px] font-display tracking-widest text-zinc-400 uppercase">ORICON TOTAL SALES</p>
-            <p class="text-lg sm:text-2xl font-black text-white mt-0.5">突破 <span class="text-vermillion-bright">8,000</span> 萬枚</p>
-            <p class="text-xs text-zinc-400">日本 Oricon 公信榜史上最高</p>
+      <!-- 4-Column Key Records Stats Bar -->
+      <div class="bg-jet-900 border-t border-jet-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="border-l-4 border-vermillion pl-4">
+            <p class="font-condensed text-xs tracking-[0.2em] text-zinc-400 uppercase">ORICON TOTAL SALES</p>
+            <p class="text-xl sm:text-2xl font-black text-white mt-1">突破 <span class="text-vermillion-bright">8,000</span> 萬枚</p>
+            <p class="text-xs text-zinc-400 mt-0.5">日本 Oricon 公信榜設立以來最高</p>
           </div>
-          <div class="border-l-2 border-gold pl-3.5">
-            <p class="text-[11px] font-display tracking-widest text-zinc-400 uppercase">WORLDWIDE SALES</p>
-            <p class="text-lg sm:text-2xl font-black text-white mt-0.5">超過 <span class="text-gold">1 億</span>枚</p>
-            <p class="text-xs text-zinc-400">2008 金氏世界紀錄認證藝人</p>
+          <div class="border-l-4 border-gold pl-4">
+            <p class="font-condensed text-xs tracking-[0.2em] text-zinc-400 uppercase">WORLDWIDE SALES</p>
+            <p class="text-xl sm:text-2xl font-black text-white mt-1">超過 <span class="text-gold">1 億</span>枚</p>
+            <p class="text-xs text-zinc-400 mt-0.5">2008 金氏世界紀錄認證藝人</p>
           </div>
-          <div class="border-l-2 border-vermillion pl-3.5">
-            <p class="text-[11px] font-display tracking-widest text-zinc-400 uppercase">MILLION SELLERS</p>
-            <p class="text-lg sm:text-2xl font-black text-white mt-0.5">15 單曲 / 19 專輯</p>
-            <p class="text-xs text-zinc-400">累計 34 作百萬銷量傳奇</p>
+          <div class="border-l-4 border-vermillion pl-4">
+            <p class="font-condensed text-xs tracking-[0.2em] text-zinc-400 uppercase">MILLION SELLERS</p>
+            <p class="text-xl sm:text-2xl font-black text-white mt-1">15 單曲 / 19 專輯</p>
+            <p class="text-xs text-zinc-400 mt-0.5">累計 34 作百萬銷量傳奇紀錄</p>
           </div>
-          <div class="border-l-2 border-gold pl-3.5">
-            <p class="text-[11px] font-display tracking-widest text-zinc-400 uppercase">ROCKWALK HALL OF FAME</p>
-            <p class="text-lg sm:text-2xl font-black text-white mt-0.5">2007 <span class="text-gold">唯一亞洲</span></p>
-            <p class="text-xs text-zinc-400">入選好萊塢搖滾名人堂</p>
+          <div class="border-l-4 border-gold pl-4">
+            <p class="font-condensed text-xs tracking-[0.2em] text-zinc-400 uppercase">HOLLYWOOD'S ROCKWALK</p>
+            <p class="text-xl sm:text-2xl font-black text-white mt-1">2007 <span class="text-gold">唯一亞洲</span></p>
+            <p class="text-xs text-zinc-400 mt-0.5">入選好萊塢搖滾名人堂音樂家</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ==================== CHRONICLE (bz-vermillion.com NEWS List Style) ==================== -->
-    <section id="chronicle" class="py-16 sm:py-24 bg-jet-950 border-b border-jet-700">
+    <!-- ==================== SECTION 2: CHRONICLE (bz-vermillion.com NEWS Style) ==================== -->
+    <section id="chronicle" class="py-16 sm:py-24 bg-[#070707] border-b border-jet-700">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
           <div>
-            <p class="font-display text-xs font-bold tracking-[0.25em] text-vermillion-bright uppercase mb-1">HISTORY &amp; RECORDS</p>
-            <h2 class="font-display text-3xl sm:text-4xl font-black text-white tracking-wider uppercase vermillion-slash">
+            <p class="font-condensed text-xs font-bold tracking-[0.26em] text-vermillion-bright uppercase mb-1">HISTORY &amp; MILESTONES</p>
+            <h2 class="font-condensed text-3xl sm:text-4xl font-bold text-white tracking-[0.12em] uppercase vermillion-slash">
               CHRONICLE
             </h2>
           </div>
           <p class="text-xs sm:text-sm text-zinc-400">
-            叱吒風雲 90 年代至今・點擊任一紀錄可查看完整典藏解說
+            叱吒風雲 90 年代至今・點擊任一紀錄查看完整典藏解說
           </p>
         </div>
 
-        <!-- News-style list rows -->
         <div id="chronicleList" class="divide-y divide-jet-700 border-t border-b border-jet-700">
-          <!-- Populated dynamically by JS -->
+          <!-- Dynamically populated by JS -->
         </div>
       </div>
     </section>
 
-    <!-- ==================== BIOGRAPHY & STYLE EVOLUTION ==================== -->
-    <section id="biography" class="py-16 sm:py-24 bg-jet-900 border-b border-jet-700">
+    <!-- ==================== SECTION 3: BIOGRAPHY & STYLE EVOLUTION ==================== -->
+    <section id="biography" class="py-16 sm:py-24 bg-jet-850 border-b border-jet-700">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-12">
-          <p class="font-display text-xs font-bold tracking-[0.25em] text-vermillion-bright uppercase mb-1">THE DUO &amp; SOUND</p>
-          <h2 class="font-display text-3xl sm:text-4xl font-black text-white tracking-wider uppercase vermillion-slash">
+          <p class="font-condensed text-xs font-bold tracking-[0.26em] text-vermillion-bright uppercase mb-1">THE DUO &amp; SOUND EVOLUTION</p>
+          <h2 class="font-condensed text-3xl sm:text-4xl font-bold text-white tracking-[0.12em] uppercase vermillion-slash">
             BIOGRAPHY
           </h2>
         </div>
 
         <!-- Overview Box -->
-        <div class="bg-jet-850 border border-jet-700 rounded-lg p-6 sm:p-8 mb-10">
-          <div class="flex flex-wrap items-center gap-3 mb-4">
-            <span class="bg-vermillion text-white font-display font-black italic px-3 py-0.5 rounded text-sm">B'z [bi'z]</span>
-            <span class="text-xs sm:text-sm text-zinc-300 border border-jet-700 px-3 py-0.5 rounded bg-jet-900">經紀公司：VERMILLION</span>
-            <span class="text-xs sm:text-sm text-zinc-300 border border-jet-700 px-3 py-0.5 rounded bg-jet-900">唱片公司：VERMILLION RECORDS</span>
-            <span class="text-xs sm:text-sm text-gold-light border border-gold/40 px-3 py-0.5 rounded bg-jet-900">官方粉絲俱樂部：B'z Party</span>
+        <div class="bg-[#070707] border border-jet-700 p-6 sm:p-8 mb-10">
+          <div class="flex flex-wrap items-center gap-2.5 mb-5">
+            <span class="bg-vermillion text-white font-display font-black italic px-3 py-1 text-sm">B'z [bi'z]</span>
+            <span class="text-xs sm:text-sm text-zinc-300 border border-jet-700 px-3 py-1 bg-jet-850">結成：1988年</span>
+            <span class="text-xs sm:text-sm text-zinc-300 border border-jet-700 px-3 py-1 bg-jet-850">經紀公司：VERMILLION</span>
+            <span class="text-xs sm:text-sm text-zinc-300 border border-jet-700 px-3 py-1 bg-jet-850">唱片公司：VERMILLION RECORDS</span>
+            <span class="text-xs sm:text-sm text-gold-light border border-gold/50 px-3 py-1 bg-jet-850">官方粉絲俱樂部：B'z Party</span>
           </div>
           <p class="text-zinc-300 leading-relaxed text-sm sm:text-base">
-            日本傳奇雙人搖滾組合，讀做 <strong class="text-white">[bi’z]</strong>，由吉他手<strong class="text-white">松本孝弘</strong>與主唱<strong class="text-white">稻葉浩志</strong>在 <strong class="text-white">1988 年</strong>結成。1988 年以同時發售單曲〈所以請放開那隻手〉和專輯《B'z》正式出道，締造日本音樂史上無人能及的百萬銷量神話。早期全國巡迴演唱會最高紀錄多達 30 幾場，走過近 40 年搖滾歷程，至今仍是無數樂迷心中最熱血的青春印記。
+            日本雙人搖滾組合，讀做 <strong class="text-white">[bi’z]</strong>，由吉他手<strong class="text-white">松本孝弘</strong>與主唱<strong class="text-white">稻葉浩志</strong>在 <strong class="text-white">1988 年</strong>結成。1988 年以同時發售單曲〈所以請放開那隻手〉和專輯《B'z》正式出道，叱吒風雲 90 年代。早期全國巡迴演唱會最高紀錄多達 30 幾場，走過最輝煌的二十幾年，如今出道將近 40 年，留下無數跨世代搖滾經典。
           </p>
         </div>
 
-        <!-- Member Profile Cards + Exact Reference Table -->
+        <!-- Member Profile Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           <!-- Tak Matsumoto -->
-          <div class="bg-jet-850 border border-jet-700 rounded-lg p-6 sm:p-7 card-hover relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-vermillion/10 rounded-bl-full pointer-events-none"></div>
-            <span class="inline-block text-[11px] font-display font-bold tracking-[0.2em] text-vermillion-bright uppercase mb-2">
+          <div class="bg-[#070707] border border-jet-700 p-6 sm:p-7 card-hover relative">
+            <div class="w-1.5 h-8 bg-vermillion absolute top-6 left-0"></div>
+            <span class="inline-block font-condensed text-xs font-bold tracking-[0.22em] text-vermillion-bright uppercase mb-1.5">
               GUITAR / COMPOSER / PRODUCER
             </span>
             <h3 class="text-2xl font-black text-white tracking-wide">
-              松本孝弘 <span class="block sm:inline font-display text-sm sm:text-base font-bold text-zinc-400 sm:ml-2">TAK MATSUMOTO</span>
+              松本孝弘 <span class="block sm:inline font-condensed text-base font-semibold text-zinc-400 sm:ml-2 tracking-wider">TAK MATSUMOTO</span>
             </h3>
             <dl class="mt-5 space-y-2.5 text-sm border-t border-jet-700 pt-4">
               <div class="flex justify-between">
@@ -333,13 +355,13 @@
           </div>
 
           <!-- Koshi Inaba -->
-          <div class="bg-jet-850 border border-jet-700 rounded-lg p-6 sm:p-7 card-hover relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-24 h-24 bg-vermillion/10 rounded-bl-full pointer-events-none"></div>
-            <span class="inline-block text-[11px] font-display font-bold tracking-[0.2em] text-vermillion-bright uppercase mb-2">
+          <div class="bg-[#070707] border border-jet-700 p-6 sm:p-7 card-hover relative">
+            <div class="w-1.5 h-8 bg-vermillion absolute top-6 left-0"></div>
+            <span class="inline-block font-condensed text-xs font-bold tracking-[0.22em] text-vermillion-bright uppercase mb-1.5">
               VOCAL / LYRICIST
             </span>
             <h3 class="text-2xl font-black text-white tracking-wide">
-              稻葉浩志 <span class="block sm:inline font-display text-sm sm:text-base font-bold text-zinc-400 sm:ml-2">KOSHI INABA</span>
+              稻葉浩志 <span class="block sm:inline font-condensed text-base font-semibold text-zinc-400 sm:ml-2 tracking-wider">KOSHI INABA</span>
             </h3>
             <dl class="mt-5 space-y-2.5 text-sm border-t border-jet-700 pt-4">
               <div class="flex justify-between">
@@ -358,26 +380,26 @@
           </div>
         </div>
 
-        <!-- Structured Data Table (Matching Word Doc Table) -->
-        <div class="overflow-x-auto rounded-lg border border-jet-700 mb-12">
+        <!-- Reference Table -->
+        <div class="overflow-x-auto border border-jet-700 mb-12">
           <table class="w-full text-left border-collapse text-sm">
             <thead>
-              <tr class="bg-jet-800 border-b border-jet-700 text-zinc-300">
+              <tr class="bg-jet-800 border-b border-jet-700 text-zinc-200">
                 <th class="py-3.5 px-4 font-bold">姓名</th>
                 <th class="py-3.5 px-4 font-bold">職務</th>
                 <th class="py-3.5 px-4 font-bold">出生年月日</th>
                 <th class="py-3.5 px-4 font-bold">出生地</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-jet-700 bg-jet-850">
-              <tr class="hover:bg-jet-800/70 transition-colors">
-                <td class="py-3.5 px-4 font-bold text-white">松本孝弘 <span class="text-xs font-display text-zinc-400 ml-1">TAK MATSUMOTO</span></td>
+            <tbody class="divide-y divide-jet-700 bg-[#070707]">
+              <tr class="hover:bg-jet-800/60 transition-colors">
+                <td class="py-3.5 px-4 font-bold text-white">松本孝弘 <span class="text-xs font-condensed text-zinc-400 ml-1 tracking-wider">TAK MATSUMOTO</span></td>
                 <td class="py-3.5 px-4 text-zinc-300">吉他、作曲、製作人</td>
                 <td class="py-3.5 px-4 text-zinc-300">1961年3月27日</td>
                 <td class="py-3.5 px-4 text-zinc-300">大阪府</td>
               </tr>
-              <tr class="hover:bg-jet-800/70 transition-colors">
-                <td class="py-3.5 px-4 font-bold text-white">稻葉浩志 <span class="text-xs font-display text-zinc-400 ml-1">KOSHI INABA</span></td>
+              <tr class="hover:bg-jet-800/60 transition-colors">
+                <td class="py-3.5 px-4 font-bold text-white">稻葉浩志 <span class="text-xs font-condensed text-zinc-400 ml-1 tracking-wider">KOSHI INABA</span></td>
                 <td class="py-3.5 px-4 text-zinc-300">主唱、作詞</td>
                 <td class="py-3.5 px-4 text-zinc-300">1964年9月23日</td>
                 <td class="py-3.5 px-4 text-zinc-300">岡山縣</td>
@@ -386,39 +408,39 @@
           </table>
         </div>
 
-        <!-- Musical Style Evolution & Personal Reflection -->
-        <div class="bg-jet-850 border border-jet-700 rounded-lg p-6 sm:p-8">
-          <h3 class="font-display text-lg sm:text-xl font-black text-white uppercase tracking-wider mb-6 flex items-center gap-2.5">
-            <span class="w-2.5 h-2.5 rounded-full bg-vermillion"></span>
+        <!-- 4-Phase Style Evolution Cards -->
+        <div class="bg-[#070707] border border-jet-700 p-6 sm:p-8">
+          <h3 class="font-condensed text-lg sm:text-xl font-bold text-white uppercase tracking-[0.15em] mb-6 flex items-center gap-3">
+            <span class="w-3 h-3 bg-vermillion inline-block"></span>
             曲風演變與時代觀察（樂迷視角筆記）
           </h3>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-            <div class="p-4 rounded bg-jet-900 border border-jet-700">
-              <span class="text-xs font-display font-bold text-vermillion-bright tracking-widest">PHASE 01｜1988 - 1990</span>
-              <h4 class="font-bold text-white mt-1 mb-2">電子搖滾時期</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="p-5 bg-jet-850 border border-jet-700">
+              <span class="font-condensed text-xs font-bold text-vermillion-bright tracking-[0.18em]">PHASE 01｜1988 - 1990</span>
+              <h4 class="font-bold text-white text-base mt-1.5 mb-2">電子搖滾時期</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                早期曲風以電子搖滾（Electronic Rock）為主，節奏鮮明動感，誕生了〈BAD COMMUNICATION (E.STYLE)〉、〈LADY-GO-ROUND〉、〈SAFETY LOVE〉等百聽不厭的早期名曲。
+                早期以電子搖滾為主，節奏鮮明動感，誕生〈BAD COMMUNICATION (E.STYLE)〉、〈LADY-GO-ROUND〉、〈SAFETY LOVE〉等百聽不厭的神曲。
               </p>
             </div>
-            <div class="p-4 rounded bg-jet-900 border border-jet-700">
-              <span class="text-xs font-display font-bold text-gold tracking-widest">PHASE 02｜90s 黃金巔峰</span>
-              <h4 class="font-bold text-white mt-1 mb-2">硬搖滾與重金屬</h4>
+            <div class="p-5 bg-jet-850 border border-jet-700">
+              <span class="font-condensed text-xs font-bold text-gold tracking-[0.18em]">PHASE 02｜90s 黃金巔峰</span>
+              <h4 class="font-bold text-white text-base mt-1.5 mb-2">硬搖滾與重金屬</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                走紅之後正式轉為硬搖滾（Hard Rock）跟重金屬（Heavy Metal），主唱超高音熱血爆發，張張 A 面名曲、百萬銷量連發，寫下 90 年代最輝煌的傳奇。
+                走紅後改為硬搖滾跟重金屬，主唱超高音熱血爆發，張張 A 面名曲、百萬銷量連發，寫下 90 年代最輝煌的傳奇。
               </p>
             </div>
-            <div class="p-4 rounded bg-jet-900 border border-jet-700">
-              <span class="text-xs font-display font-bold text-vermillion-bright tracking-widest">PHASE 03｜2000 轉折點</span>
-              <h4 class="font-bold text-white mt-1 mb-2">R&amp;B 嘗試與唱法轉變</h4>
+            <div class="p-5 bg-jet-850 border border-jet-700">
+              <span class="font-condensed text-xs font-bold text-vermillion-bright tracking-[0.18em]">PHASE 03｜2000 轉折點</span>
+              <h4 class="font-bold text-white text-base mt-1.5 mb-2">R&amp;B 嘗試與唱法轉變</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                2000 年〈May〉單曲曾嘗試 R&amp;B 曲風搖滾樂；2000 年後改變曲風、主唱也改變唱法，最熱血且超高音的唱法留在了 20 世紀。〈RING〉成為 2000 年後唯一一張 90 年代曲風單曲。
+                2000 年〈May〉曾嘗試 R&amp;B 搖滾樂；2000 年後改變曲風與唱法，最熱血超高音留在 20 世紀，〈RING〉成唯一延續 90 年代曲風單曲。
               </p>
             </div>
-            <div class="p-4 rounded bg-jet-900 border border-jet-700">
-              <span class="text-xs font-display font-bold text-zinc-400 tracking-widest">PHASE 04｜2015 - 至今</span>
-              <h4 class="font-bold text-white mt-1 mb-2">出道近 40 載的感懷</h4>
+            <div class="p-5 bg-jet-850 border border-jet-700">
+              <span class="font-condensed text-xs font-bold text-zinc-400 tracking-[0.18em]">PHASE 04｜2015 - 至今</span>
+              <h4 class="font-bold text-white text-base mt-1.5 mb-2">出道近 40 載的感懷</h4>
               <p class="text-xs text-zinc-400 leading-relaxed">
-                從 2001〈ultra soul〉一路到 2015 年〈有頂天〉與〈RED〉之後經典名曲減少，巡迴也從早期 30 幾場縮減。走過最輝煌的二十幾年，如今回望令人無限感懷。
+                從〈ultra soul〉到 2015〈有頂天〉與〈RED〉後名曲減少，巡迴從早期 30 幾場縮減至今，走過輝煌二十幾年令人感懷。
               </p>
             </div>
           </div>
@@ -426,56 +448,54 @@
       </div>
     </section>
 
-    <!-- ==================== DISCOGRAPHY & PERSONAL PICKS ARCHIVE ==================== -->
-    <section id="discography" class="py-16 sm:py-24 bg-jet-950 border-b border-jet-700">
+    <!-- ==================== SECTION 4: DISCOGRAPHY & MY PICKS (34 COMPLETE ITEMS) ==================== -->
+    <section id="discography" class="py-16 sm:py-24 bg-[#070707] border-b border-jet-700">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Header & Search Controls -->
         <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
           <div>
-            <p class="font-display text-xs font-bold tracking-[0.25em] text-vermillion-bright uppercase mb-1">MASTERPIECE COLLECTION</p>
-            <h2 class="font-display text-3xl sm:text-4xl font-black text-white tracking-wider uppercase vermillion-slash">
+            <p class="font-condensed text-xs font-bold tracking-[0.26em] text-vermillion-bright uppercase mb-1">MASTERPIECE COLLECTION</p>
+            <h2 class="font-condensed text-3xl sm:text-4xl font-bold text-white tracking-[0.12em] uppercase vermillion-slash">
               DISCOGRAPHY &amp; MY PICKS
             </h2>
             <p class="text-xs sm:text-sm text-zinc-400 mt-3">
-              完整收錄你精選的單曲、神專與隱藏名曲（共 <span id="totalTrackCount" class="text-white font-bold">0</span> 首典藏作品，點擊卡片查看樂評）
+              完整收錄你精選的單曲、神專與專輯隱藏名曲（共 <span id="totalTrackCount" class="text-white font-bold">34</span> 部作品，點擊卡片查看完整樂評）
             </p>
           </div>
 
-          <!-- Search + Favorite Filter -->
+          <!-- Sharp Square Search Input + Favorite Star Filter -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <div class="relative">
-              <input
-                type="text"
-                id="searchInput"
-                placeholder="搜尋歌名、專輯或年份（如 SURVIVE、1995）..."
-                class="w-full sm:w-72 bg-jet-850 border border-jet-700 focus:border-vermillion rounded px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
-              />
-            </div>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="搜尋歌名、專輯或年份（如 SURVIVE、1995）..."
+              class="w-full sm:w-72 bg-jet-850 border border-jet-700 focus:border-vermillion px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
+            />
             <button
               id="favOnlyBtn"
-              class="px-4 py-2.5 rounded border border-jet-700 bg-jet-850 text-xs font-bold tracking-wider text-zinc-300 hover:border-gold hover:text-gold transition-colors flex items-center justify-center gap-1.5"
+              class="px-4 py-2.5 border border-jet-700 bg-jet-850 text-xs font-bold tracking-wider text-zinc-200 hover:border-gold hover:text-gold transition-colors flex items-center justify-center gap-1.5"
             >
-              <span id="favStarIcon">☆</span> 只看星標最愛 (<span id="favCountBadge">0</span>)
+              <span id="favStarIcon">☆</span> 最愛星標 (<span id="favCountBadge">0</span>)
             </button>
           </div>
         </div>
 
-        <!-- Filter Category Tabs -->
-        <div id="categoryTabs" class="flex flex-wrap gap-2 sm:gap-3 mb-8 pb-4 border-b border-jet-700">
-          <button data-cat="ALL" class="tab-btn active px-4 py-2.5 rounded text-xs sm:text-sm font-bold tracking-wide bg-vermillion text-white transition-all">
-            全部典藏 (ALL)
+        <!-- Filter Category Tabs (Sharp Square Corners) -->
+        <div id="categoryTabs" class="flex flex-wrap gap-2 sm:gap-2.5 mb-8 pb-5 border-b border-jet-700">
+          <button data-cat="ALL" class="tab-btn active px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-vermillion text-white border border-vermillion transition-all">
+            全部 (34)
           </button>
-          <button data-cat="TOP_PICKS" class="tab-btn px-4 py-2.5 rounded text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
-            ★ 個人最高傑作與神專
+          <button data-cat="TOP_MASTERPIECE" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
+            ★ 最高傑作與神專
           </button>
-          <button data-cat="GOLDEN_90S" class="tab-btn px-4 py-2.5 rounded text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
-            輝煌 90 年代單曲
+          <button data-cat="EARLY_ELECTRO" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
+            早期電子搖滾
           </button>
-          <button data-cat="POST_2000" class="tab-btn px-4 py-2.5 rounded text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
-            2000 年後精選單曲
+          <button data-cat="GOLDEN_90S" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
+            90s 黃金時期
           </button>
-          <button data-cat="ALBUM_GEMS" class="tab-btn px-4 py-2.5 rounded text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
-            專輯隱藏名曲
+          <button data-cat="POST_2000" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
+            2000 後精選
           </button>
         </div>
 
@@ -485,67 +505,67 @@
         </div>
 
         <!-- Empty State -->
-        <div id="emptyState" class="hidden text-center py-16 bg-jet-900 rounded-lg border border-jet-700">
-          <p class="text-zinc-400 text-base">找不到符合條件的作品，試著清除搜尋關鍵字或切換分類標籤吧！</p>
-          <button id="resetFilterBtn" class="mt-4 px-5 py-2 rounded bg-vermillion text-white text-xs font-bold tracking-wider uppercase hover:bg-vermillion-bright transition-colors">
+        <div id="emptyState" class="hidden text-center py-16 bg-jet-850 border border-jet-700">
+          <p class="text-zinc-400 text-base">找不到符合條件的作品，請清除搜尋關鍵字或切換其他分類標籤。</p>
+          <button id="resetFilterBtn" class="mt-4 px-5 py-2.5 bg-vermillion text-white text-xs font-condensed font-bold tracking-[0.2em] uppercase hover:bg-vermillion-bright transition-colors">
             重設所有篩選
           </button>
         </div>
       </div>
     </section>
 
-    <!-- ==================== OFFICIAL LINKS (bz-vermillion.com Footer Grid Style) ==================== -->
-    <section id="link" class="py-16 bg-jet-900">
+    <!-- ==================== SECTION 5: LINK (Official Portals) ==================== -->
+    <section id="link" class="py-16 bg-jet-850">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="mb-8">
-          <p class="font-display text-xs font-bold tracking-[0.25em] text-vermillion-bright uppercase mb-1">EXTERNAL PORTALS</p>
-          <h2 class="font-display text-2xl sm:text-3xl font-black text-white tracking-wider uppercase vermillion-slash">
+          <p class="font-condensed text-xs font-bold tracking-[0.26em] text-vermillion-bright uppercase mb-1">EXTERNAL PORTALS</p>
+          <h2 class="font-condensed text-2xl sm:text-3xl font-bold text-white tracking-[0.12em] uppercase vermillion-slash">
             LINK
           </h2>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a href="https://www.bz-vermillion.com/" target="_blank" rel="noopener noreferrer" class="group bg-jet-850 border border-jet-700 hover:border-vermillion p-5 rounded transition-all flex flex-col justify-between">
+          <a href="https://www.bz-vermillion.com/" target="_blank" rel="noopener noreferrer" class="group bg-[#070707] border border-jet-700 hover:border-vermillion p-5 transition-all flex flex-col justify-between">
             <div>
-              <span class="text-[10px] font-display tracking-widest text-vermillion-bright uppercase">OFFICIAL SITE</span>
-              <h3 class="font-display font-bold text-white text-base mt-1 group-hover:text-vermillion-bright transition-colors">B'z Official Website</h3>
+              <span class="font-condensed text-[11px] tracking-[0.2em] text-vermillion-bright uppercase">OFFICIAL SITE</span>
+              <h3 class="font-condensed font-bold text-white text-lg mt-1 group-hover:text-vermillion-bright transition-colors tracking-wide">B'z Official Website</h3>
             </div>
             <span class="text-xs text-zinc-400 mt-4 flex items-center justify-between">
               bz-vermillion.com
-              <span class="group-hover:translate-x-1 transition-transform">→</span>
+              <span class="group-hover:translate-x-1 transition-transform text-vermillion-bright">→</span>
             </span>
           </a>
 
-          <a href="https://www.bz-party.com/" target="_blank" rel="noopener noreferrer" class="group bg-jet-850 border border-jet-700 hover:border-vermillion p-5 rounded transition-all flex flex-col justify-between">
+          <a href="https://www.bz-party.com/" target="_blank" rel="noopener noreferrer" class="group bg-[#070707] border border-jet-700 hover:border-vermillion p-5 transition-all flex flex-col justify-between">
             <div>
-              <span class="text-[10px] font-display tracking-widest text-vermillion-bright uppercase">OFFICIAL FAN CLUB</span>
-              <h3 class="font-display font-bold text-white text-base mt-1 group-hover:text-vermillion-bright transition-colors">B'z PARTY</h3>
+              <span class="font-condensed text-[11px] tracking-[0.2em] text-vermillion-bright uppercase">OFFICIAL FAN CLUB</span>
+              <h3 class="font-condensed font-bold text-white text-lg mt-1 group-hover:text-vermillion-bright transition-colors tracking-wide">B'z PARTY</h3>
             </div>
             <span class="text-xs text-zinc-400 mt-4 flex items-center justify-between">
               bz-party.com
-              <span class="group-hover:translate-x-1 transition-transform">→</span>
+              <span class="group-hover:translate-x-1 transition-transform text-vermillion-bright">→</span>
             </span>
           </a>
 
-          <a href="https://houseofstrings.jp/" target="_blank" rel="noopener noreferrer" class="group bg-jet-850 border border-jet-700 hover:border-vermillion p-5 rounded transition-all flex flex-col justify-between">
+          <a href="https://houseofstrings.jp/" target="_blank" rel="noopener noreferrer" class="group bg-[#070707] border border-jet-700 hover:border-vermillion p-5 transition-all flex flex-col justify-between">
             <div>
-              <span class="text-[10px] font-display tracking-widest text-vermillion-bright uppercase">SOLO ARCHIVE</span>
-              <h3 class="font-display font-bold text-white text-base mt-1 group-hover:text-vermillion-bright transition-colors">Tak Matsumoto Official</h3>
+              <span class="font-condensed text-[11px] tracking-[0.2em] text-vermillion-bright uppercase">SOLO ARCHIVE</span>
+              <h3 class="font-condensed font-bold text-white text-lg mt-1 group-hover:text-vermillion-bright transition-colors tracking-wide">Tak Matsumoto Official</h3>
             </div>
             <span class="text-xs text-zinc-400 mt-4 flex items-center justify-between">
               House Of Strings
-              <span class="group-hover:translate-x-1 transition-transform">→</span>
+              <span class="group-hover:translate-x-1 transition-transform text-vermillion-bright">→</span>
             </span>
           </a>
 
-          <a href="https://en-zine.jp/" target="_blank" rel="noopener noreferrer" class="group bg-jet-850 border border-jet-700 hover:border-vermillion p-5 rounded transition-all flex flex-col justify-between">
+          <a href="https://en-zine.jp/" target="_blank" rel="noopener noreferrer" class="group bg-[#070707] border border-jet-700 hover:border-vermillion p-5 transition-all flex flex-col justify-between">
             <div>
-              <span class="text-[10px] font-display tracking-widest text-vermillion-bright uppercase">SOLO ARCHIVE</span>
-              <h3 class="font-display font-bold text-white text-base mt-1 group-hover:text-vermillion-bright transition-colors">KOSHI INABA Official</h3>
+              <span class="font-condensed text-[11px] tracking-[0.2em] text-vermillion-bright uppercase">SOLO ARCHIVE</span>
+              <h3 class="font-condensed font-bold text-white text-lg mt-1 group-hover:text-vermillion-bright transition-colors tracking-wide">KOSHI INABA Official</h3>
             </div>
             <span class="text-xs text-zinc-400 mt-4 flex items-center justify-between">
               en-zine.jp
-              <span class="group-hover:translate-x-1 transition-transform">→</span>
+              <span class="group-hover:translate-x-1 transition-transform text-vermillion-bright">→</span>
             </span>
           </a>
         </div>
@@ -554,42 +574,41 @@
   </main>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="bg-jet-950 border-t border-jet-700 py-10">
+  <footer class="bg-[#070707] border-t border-jet-700 py-10">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-      <div class="flex items-center gap-2.5">
-        <span class="font-display font-black italic text-white text-base">B'z</span>
-        <span>VERMILLION FAN ARCHIVE — 個人搖滾紀念與樂評典藏站</span>
+      <div class="flex items-center gap-3">
+        <span class="inline-block border border-vermillion px-2 py-0.5 font-display font-black italic text-vermillion text-sm">B'z</span>
+        <span>VERMILLION ARCHIVE — 個人搖滾紀念與樂評典藏站</span>
       </div>
       <p class="text-center sm:text-right">
-        Tribute inspired by bz-vermillion.com • All commentary &amp; rankings curated from personal archive.
+        Styled after bz-vermillion.com • Curated from Personal B'z Archive.
       </p>
     </div>
   </footer>
 
-  <!-- Floating PageTop Button (bz-vermillion signature) -->
+  <!-- Floating PageTop Button -->
   <button
     id="pageTopBtn"
     aria-label="回到頂端"
-    class="fixed bottom-6 right-6 z-30 bg-jet-850 hover:bg-vermillion text-white border border-jet-700 hover:border-vermillion px-3.5 py-2.5 rounded shadow-xl font-display text-xs font-bold tracking-widest uppercase transition-all opacity-0 pointer-events-none"
+    class="fixed bottom-6 right-6 z-30 bg-[#070707] hover:bg-vermillion text-white border border-jet-700 hover:border-vermillion px-4 py-2.5 shadow-xl font-condensed text-xs font-bold tracking-[0.22em] uppercase transition-all opacity-0 pointer-events-none"
   >
     ▲ PageTop
   </button>
 
-  <!-- ==================== DETAIL MODAL (For TOPIC!, CHRONICLE & DISCOGRAPHY) ==================== -->
-  <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-    <div class="bg-jet-850 border border-jet-700 rounded-lg max-w-2xl w-full overflow-hidden shadow-2xl animate-fadeIn">
-      <!-- Top Vermillion Accent Bar -->
+  <!-- ==================== DETAIL MODAL ==================== -->
+  <div id="detailModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-sm">
+    <div class="bg-jet-850 border border-jet-700 max-w-2xl w-full overflow-hidden shadow-2xl">
       <div class="h-1.5 w-full bg-vermillion"></div>
       <div class="p-6 sm:p-8">
         <div class="flex items-start justify-between gap-4">
           <div>
-            <span id="modalBadge" class="inline-block bg-vermillion text-white font-display font-bold text-[11px] px-2.5 py-0.5 rounded uppercase tracking-wider mb-2">
+            <span id="modalBadge" class="inline-block bg-vermillion text-white font-condensed font-bold text-xs px-2.5 py-0.5 uppercase tracking-[0.18em] mb-2">
               ARCHIVE DETAIL
             </span>
             <h3 id="modalTitle" class="text-xl sm:text-2xl font-black text-white leading-snug"></h3>
             <p id="modalMeta" class="text-xs sm:text-sm text-gold-light font-medium mt-1"></p>
           </div>
-          <button id="closeModalBtn" aria-label="關閉視窗" class="p-2 rounded bg-jet-900 border border-jet-700 text-zinc-400 hover:text-white hover:border-vermillion transition-colors">
+          <button id="closeModalBtn" aria-label="關閉視窗" class="px-3 py-1.5 bg-[#070707] border border-jet-700 text-zinc-400 hover:text-white hover:border-vermillion transition-colors font-bold">
             ✕
           </button>
         </div>
@@ -598,13 +617,13 @@
           <p id="modalBody" class="text-zinc-200 text-sm sm:text-base leading-relaxed whitespace-pre-line"></p>
         </div>
 
-        <div id="modalExtraBox" class="mt-5 p-4 rounded bg-jet-900 border-l-4 border-vermillion hidden">
-          <p class="text-[11px] font-display font-bold text-vermillion-bright tracking-widest uppercase mb-1">PERSONAL COMMENTARY / 樂評筆記</p>
+        <div id="modalExtraBox" class="mt-5 p-4 bg-[#070707] border-l-4 border-vermillion hidden">
+          <p class="font-condensed text-xs font-bold text-vermillion-bright tracking-[0.2em] uppercase mb-1">PERSONAL COMMENTARY / 樂評筆記</p>
           <p id="modalComment" class="text-xs sm:text-sm text-zinc-300 leading-relaxed"></p>
         </div>
 
         <div class="mt-6 flex justify-end">
-          <button id="modalConfirmCloseBtn" class="px-5 py-2 rounded bg-jet-900 border border-jet-700 hover:border-vermillion text-xs font-display font-bold tracking-widest text-white uppercase transition-colors">
+          <button id="modalConfirmCloseBtn" class="px-6 py-2 bg-[#070707] border border-jet-700 hover:border-vermillion text-xs font-condensed font-bold tracking-[0.22em] text-white uppercase transition-colors">
             CLOSE
           </button>
         </div>
@@ -614,111 +633,96 @@
 
   <!-- ==================== JAVASCRIPT DATA & INTERACTION ==================== -->
   <script>
-    // 1. Hero TOPIC! Carousel Data (Directly built from user's Word document)
+    // 1. TOPIC! Carousel Slides
     const heroSlides = [
       {
         badge: 'TOPIC! — ALL-TIME RECORD',
-        era: '1988 - 2026',
         title: '累計總銷量突破 8,000 萬枚・日本 Oricon 史上最高紀錄',
-        subtitle: '全球唱片總銷量超過 1 億枚｜2007 Hollywood\'s RockWalk 唯一亞洲音樂家｜2008 金氏世界紀錄認證',
-        summary: '1988 年由吉他手松本孝弘與主唱稻葉浩志結成，迄今已有 15 張單曲、19 張專輯獲得百萬銷量紀錄，寫下日本音樂史上無可撼動的搖滾傳奇。',
-        modalDetail: 'B\'z 讀做 [bi\'z]，所屬經紀公司為 VERMILLION，唱片公司為 VERMILLION RECORDS，官方粉絲俱樂部為「B\'z Party」。1998 年發售的精選輯《B\'z The Best "Pleasure"》日本國內史上首次突破 500 萬枚，與同年《B\'z The Best "Treasure"》兩作合計約 1,000 萬枚總銷量。2007 年進入名人堂「Hollywood\'s RockWalk」，2008 年獲金氏世界紀錄授予「日本最暢銷專輯藝人」認證。'
+        subtitle: '全球唱片總銷量超過 1 億枚｜15 張單曲、19 張專輯百萬銷量傳奇',
+        summary: '1988 年由吉他手松本孝弘與主唱稻葉浩志結成，1998 年精選輯《Pleasure》破 500 萬枚、與《Treasure》合計約 1,000 萬枚，締造日本樂壇無人能敵的銷售神話。',
+        modalDetail: 'B\'z 讀做 [bi\'z]，所屬經紀公司為 VERMILLION，唱片公司為 VERMILLION RECORDS，官方粉絲俱樂部為「B\'z Party」。迄今已有 15 張單曲、19 張專輯獲得百萬銷量紀錄。1998 年發售的精選輯《B\'z The Best "Pleasure"》日本國內史上首次突破 500 萬枚，與同年《B\'z The Best "Treasure"》兩作品合計獲得約 1,000 萬枚總銷量。目前日本 Oricon 總銷量累積突破 8,000 萬枚，全球唱片總銷量累積超過 1 億枚。'
       },
       {
         badge: 'TOPIC! — PERSONAL FAVORITE ALBUM',
-        era: '1997 MASTERPIECE',
-        title: '個人最愛神專《SURVIVE》— 絕無冷場的搖滾經典',
-        subtitle: '1997年發行｜Oricon 累計 172.3 萬枚總銷量紀錄',
-        summary: '從開場的重金屬名曲〈DEEP KISS〉到第二首人氣名曲〈游泳者阿〉，一路銜接到老牌抒情搖滾〈Calling〉，整張專輯一氣呵成、相當耐聽！',
-        modalDetail: '個人最喜歡的專輯是 1997 年發行的《SURVIVE》，在 Oricon 累計獲得 172.3 萬枚總銷量紀錄。這張專輯真正做到「絕無冷場」，從一開始的重金屬名曲〈DEEP KISS〉引爆能量，緊接著第二首人氣名曲〈游泳者阿〉，一直到氣勢磅礴的老牌抒情搖滾〈Calling〉，曲順流暢一氣呵成，百聽不厭。'
+        title: '個人最愛神專《SURVIVE》— 172.3 萬枚絕無冷場的搖滾經典',
+        subtitle: '1997 年發行｜從〈DEEP KISS〉到〈游泳者阿〉再到〈Calling〉一氣呵成',
+        summary: '個人最喜歡的專輯是 1997 年《SURVIVE》，Oricon 累計 172.3 萬枚總銷量。整張專輯絕無冷場，從重金屬開場到抒情搖滾收尾，相當耐聽！',
+        modalDetail: '個人最喜歡的專輯是 1997 年發行的《SURVIVE》，Oricon 累計獲得 172.3 萬枚總銷量紀錄。這張專輯絕無冷場，從一開始的重金屬名曲〈DEEP KISS〉到第二首人氣名曲〈游泳者阿〉一直到老牌抒情搖滾〈Calling〉，一氣呵成，相當耐聽。'
       },
       {
         badge: 'TOPIC! — ULTIMATE MASTERPIECE',
-        era: '1989 ELECTRONIC ROCK',
-        title: '個人心中最高傑作〈BAD COMMUNICATION (E.STYLE)〉',
-        subtitle: '1989年迷你專輯重新編曲出現・保留早期電子搖滾精華',
-        summary: '這首隱藏神曲完美保留了 B\'z 早期電子搖滾的純粹律動與爆發力，與〈LADY-GO-ROUND〉、〈SAFETY LOVE〉並列早期百聽不厭的神曲。',
-        modalDetail: 'B\'z 最高傑作個人認為是〈BAD COMMUNICATION (E.STYLE)〉！這首隱藏神曲是 1989 年迷你專輯《BAD COMMUNICATION》重新編曲出現的版本，完整保有 B\'z 早期電子搖滾的獨特風格，編曲張力與律動感相當動聽。'
+        title: '最高傑作〈BAD COMMUNICATION (E.STYLE)〉— 電子搖滾隱藏神曲',
+        subtitle: '1989 年迷你專輯《BAD COMMUNICATION》重新編曲出現',
+        summary: 'B\'z 最高傑作個人認為是〈BAD COMMUNICATION (E.STYLE)〉，保有 B\'z 早期電子搖滾的純粹風格，相當動聽，百聽不厭。',
+        modalDetail: 'B\'z 最高傑作個人認為是〈BAD COMMUNICATION (E.STYLE)〉，這首隱藏神曲是 1989 年迷你專輯《BAD COMMUNICATION》重新編曲出現的版本，保有 B\'z 早期電子搖滾的風格，相當動聽。'
       },
       {
-        badge: 'TOPIC! — PEAK SALES LEGENDS',
-        era: '1993 & 1995 PEAKS',
-        title: '史上最高銷量單曲（202.1萬枚）與 300 萬神專《LOOSE》',
-        subtitle: '〈即使愛是任性的，我也不願意傷害妳〉× 專輯《LOOSE》',
-        summary: '1993 年第 12 張單曲成為 B\'z 唯一突破 200 萬枚的單曲；1995 年《LOOSE》更創下 Oricon 300 萬枚最高專輯銷量紀錄。',
-        modalDetail: 'B\'z 銷售量最高單曲是 1993 年第 12 張單曲〈即使愛是任性的，我也不願意傷害妳〉，Oricon 週間連續 4 週冠軍、1993 年榜亞軍，加計 2003 年再發盤累計總銷量高達 202.1 萬枚，是唯一突破 200 萬枚的單曲。而銷量最高專輯則是 1995 年《LOOSE》，Oricon 銷量高達 300 萬枚，並收錄〈夢見山丘〉、〈即使那不是美麗的愛情〉等經典名曲。'
+        badge: 'TOPIC! — HALL OF FAME & GUINNESS',
+        title: '2007 入選好萊塢「Hollywood\'s RockWalk」唯一亞洲音樂家',
+        subtitle: '2008 年獲金氏世界紀錄授予「日本最暢銷專輯藝人」認證',
+        summary: '不僅稱霸日本 Oricon 公信榜，2007 年更正式進入好萊塢搖滾名人堂，成為目前唯一受此殊榮的亞洲音樂家。',
+        modalDetail: '2007 年 B\'z 正式進入名人堂「Hollywood\'s RockWalk」，成為了目前唯一受此殊榮的亞洲音樂家。2008 年再由金氏世界紀錄授予「日本最暢銷專輯藝人」官方認證。'
       }
     ];
 
-    // 2. Chronicle / Milestones List (Styled like bz-vermillion.com NEWS)
+    // 2. CHRONICLE Timeline List
     const chronicles = [
       {
         date: '1988.09.21',
         tag: 'DEBUT',
-        title: '松本孝弘與稻葉浩志結成 B\'z，單曲〈所以請放開那隻手〉與首張專輯《B\'z》同步出道',
-        detail: '1988 年由吉他手松本孝弘（TAK MATSUMOTO）與主唱稻葉浩志（KOSHI INABA）正式結成 B\'z [bi\'z]，所屬經紀公司 VERMILLION、唱片公司 VERMILLION RECORDS，官方粉絲俱樂部為「B\'z Party」。以同時發售單曲〈所以請放開那隻手〉和專輯《B\'z》踏出傳奇第一步。'
+        title: '松本孝弘與稻葉浩志結成 B\'z，同時發售單曲〈所以請放開那隻手〉和專輯《B\'z》出道',
+        detail: '1988 年由吉他手松本孝弘與主唱稻葉浩志結成 B\'z [bi\'z]，所屬經紀公司為 VERMILLION，唱片公司為 VERMILLION RECORDS，官方粉絲俱樂部為「B\'z Party」。1988 年以同時發售單曲〈所以請放開那隻手〉和專輯《B\'z》正式出道。'
       },
       {
-        date: '1990 - 1991',
-        tag: 'MILLION',
-        title: '〈太陽的Komachi Angel〉首奪 Oricon 冠軍；《RISKY》與〈LADY NAVIGATION〉開啟百萬連霸',
-        detail: '1990 年發售的第 5 張單曲〈太陽的Komachi Angel〉首次獲得 Oricon 公信榜第 1 位；同年發售的第 4 張專輯《RISKY》與 1991 年第 10 張單曲〈LADY NAVIGATION〉雙雙首次突破百萬銷量紀錄。迄今為止 B\'z 已有 15 張單曲、19 張專輯獲得百萬銷量紀錄！'
+        date: '1990',
+        tag: '1ST #1 & MILLION',
+        title: '5th 單曲〈太陽的Komachi Angel〉首奪 Oricon 第 1 位；4th 專輯《RISKY》首破百萬銷量',
+        detail: '1990 年發售的 5th 單曲〈太陽的Komachi Angel〉首次獲得 Oricon 公信榜第 1 位，同年發售的 4th 專輯《RISKY》更首次獲得百萬銷量紀錄，正式開啟叱吒風雲的 90 年代。'
       },
       {
-        date: '1993.03.17',
-        tag: 'SINGLE RECORD',
-        title: '第12張單曲〈即使愛是任性的，我也不願意傷害妳〉累計 202.1 萬枚，創單曲最高銷量紀錄',
-        detail: '本作在 Oricon 週間單曲榜獲得連續 4 週冠軍，並於 1993 年度 Oricon 年榜創下自身最高亞軍紀錄。與發售 10 年後的 2003 年再發盤合計，累計總銷量到達 202.1 萬枚，成為 B\'z 單曲中唯一突破 200 萬枚總銷量紀錄之作。'
+        date: '1991',
+        tag: 'MILLION SINGLE',
+        title: '10th 單曲〈LADY NAVIGATION〉首次獲得百萬銷量紀錄，累計締造 15 單曲、19 專輯百萬傳奇',
+        detail: '1991 年發售的 10th 單曲〈LADY NAVIGATION〉成為首張百萬單曲作品，此後熱銷不斷，迄今已有 15 張單曲、19 張專輯獲得百萬銷量紀錄。'
       },
       {
-        date: '1995.11.22',
-        tag: 'ALBUM RECORD',
-        title: '專輯《LOOSE》Oricon 銷量高達 300 萬枚，寫下 B\'z 史上最高專輯銷量',
-        detail: '1995 年發行的經典專輯《LOOSE》在 Oricon 創下高達 300 萬枚的驚人銷量，為 B\'z 生涯最高銷量專輯，其中收錄的〈夢見山丘〉與〈即使那不是美麗的愛情〉更是百聽不厭的專輯名曲。'
+        date: '1993',
+        tag: '202.1萬枚 RECORD',
+        title: '第 12 張單曲〈即使愛是任性的，我也不願意傷害妳〉累計 202.1 萬枚，創最高銷量單曲紀錄',
+        detail: '本作是 B\'z 的最暢銷單曲，在 Oricon 週間單曲榜獲得連續 4 週冠軍，在 1993 年度 Oricon 年榜創下自身最高亞軍紀錄。與發售起 10 年後的 2003 年再發盤合計，累計總銷量到達 202.1 萬枚，是 B\'z 單曲中唯一突破 200 萬枚總銷量紀錄之單曲。'
       },
       {
-        date: '1998.05.20',
-        tag: 'BEST ALBUM',
-        title: '《B\'z The Best "Pleasure"》日本史上首破 500 萬枚，與《"Treasure"》合計狂銷 1,000 萬枚',
-        detail: '1998 年發售的精選輯《B\'z The Best "Pleasure"》成為日本國內音樂史上首次總銷量突破 500 萬枚的專輯，與同年發售的《B\'z The Best "Treasure"》兩作品合計獲得約 1,000 萬枚總銷量紀錄。'
+        date: '1995',
+        tag: '300萬枚 ALBUM',
+        title: '專輯《LOOSE》Oricon 銷量高達 300 萬枚，寫下 B\'z 生涯最高銷量專輯紀錄',
+        detail: 'B\'z 銷量最高專輯是 1995 年《LOOSE》專輯，Oricon 銷量高達 300 萬枚，並收錄〈夢見山丘〉、〈即使那不是美麗的愛情〉等百聽不厭的名曲。'
+      },
+      {
+        date: '1998',
+        tag: '1,000萬枚 BEST',
+        title: '精選輯《B\'z The Best "Pleasure"》日本史上首破 500 萬枚，與《"Treasure"》合計約 1,000 萬枚',
+        detail: '1998 年發售的精選輯《B\'z The Best "Pleasure"》除了是日本國內音樂史上首次總銷量突破 500 萬枚外，與同年發售的《B\'z The Best "Treasure"》2 作品合計獲得約 1,000 萬枚總銷量紀錄。'
       },
       {
         date: '2007 - 2008',
-        tag: 'HALL OF FAME',
+        tag: 'WORLD HONOR',
         title: '2007 入選好萊塢「Hollywood\'s RockWalk」唯一亞洲音樂家；2008 獲金氏世界紀錄認證',
-        detail: '2007 年正式進入名人堂「Hollywood\'s RockWalk」，成為目前唯一受此殊榮的亞洲音樂家。2008 年再由金氏世界紀錄授予「日本最暢銷專輯藝人」官方認證。目前日本 Oricon 總銷量累積突破 8,000 萬枚，全球唱片總銷量超過 1 億枚。'
-      },
-      {
-        date: '1988 - 2026',
-        tag: '40TH ERA',
-        title: '出道將近 40 年的時代回望：從全國 30 幾場巡迴到如今的沉澱感懷',
-        detail: '2000 年後 B\'z 改變曲風、主唱也改變唱法，最熱血且超高音的唱法留在了 20 世紀。早期全國巡迴演唱會最高紀錄曾達 30 幾場，如今出道將近 40 年，專輯與單曲發行大量減少，巡迴場次也大幅縮減，走過最輝煌的二十幾年，如今回望令人深感時代變遷。'
+        detail: '2007 年進入名人堂「Hollywood\'s RockWalk」，成為目前唯一受此殊榮的亞洲音樂家。2008 年由金氏世界紀錄授予「日本最暢銷專輯藝人」認證。'
       }
     ];
 
-    // 3. Complete Discography & Personal Picks Dataset (Every single item from the Word doc)
+    // 3. Complete 34 Tracks & Albums Dataset (Every single item requested)
     const tracks = [
-      // --- TOP PICKS & MASTERPIECES ---
       {
         id: 'bad-comm-estyle',
         title: 'BAD COMMUNICATION (E.STYLE)',
         year: '1989',
-        type: '隱藏神曲 / 最高傑作',
-        category: 'TOP_PICKS',
-        badge: 'ULTIMATE #1',
+        type: '最高傑作 / 隱藏神曲',
+        category: 'EARLY_ELECTRO',
+        isMasterpiece: true,
+        badge: '最高傑作 #1',
         sales: '1989 迷你專輯重編版',
-        comment: '個人心中 B\'z 最高傑作！這首隱藏神曲是 1989 年迷你專輯《BAD COMMUNICATION》重新編曲出現的版本，完整保有 B\'z 早期電子搖滾的獨特風格，相當動聽。',
-        defaultFav: true
-      },
-      {
-        id: 'survive-album',
-        title: 'SURVIVE（專輯）',
-        year: '1997',
-        type: '個人最喜歡專輯',
-        category: 'TOP_PICKS',
-        badge: 'FAVORITE ALBUM',
-        sales: 'Oricon 172.3 萬枚',
-        comment: '個人最喜歡的專輯！這張專輯絕無冷場，從一開始的重金屬名曲〈DEEP KISS〉到第二首人氣名曲〈游泳者阿〉一直到老牌抒情搖滾〈Calling〉，一氣呵成，相當耐聽。',
+        comment: 'B\'z 最高傑作個人認為是〈BAD COMMUNICATION (E.STYLE)〉，這首隱藏神曲是 1989 年迷你專輯 BAD COMMUNICATION 重新編曲出現，保有 B\'z 早期電子搖滾的風格，相當動聽。',
         defaultFav: true
       },
       {
@@ -726,302 +730,287 @@
         title: 'LADY-GO-ROUND',
         year: '1990',
         type: '早期電子搖滾名曲',
-        category: 'TOP_PICKS',
-        badge: 'EARLY CLASSIC',
-        sales: '早期代表名曲',
-        comment: 'B\'z 早期電子搖滾時期的代表性神曲之一，節奏鮮明充滿活力，讓人百聽不厭。',
+        category: 'EARLY_ELECTRO',
+        isMasterpiece: false,
+        badge: 'EARLY GEM',
+        sales: '1990 早期單曲',
+        comment: 'B\'z 早期名曲，保有早期電子搖滾的節奏感與活力，是讓人百聽不厭的神曲。',
         defaultFav: true
       },
       {
         id: 'safety-love',
         title: 'SAFETY LOVE',
         year: '1991',
-        type: '早期演唱會神曲',
-        category: 'TOP_PICKS',
-        badge: 'LIVE GEM',
+        type: '1991 Pleasure 演唱會神曲',
+        category: 'EARLY_ELECTRO',
+        isMasterpiece: false,
+        badge: '1991 LIVE',
         sales: '1991 Pleasure 演唱會演唱',
-        comment: '在 1991 年 Pleasure 演唱會上演唱的早期神曲，展現 B\'z 早期電子搖滾與舞台熱力的絕佳魅力，百聽不厭。',
+        comment: '1991 年 Pleasure 演唱會演唱的〈SAFETY LOVE〉，展現早期電子搖滾與舞台感染力，是讓人百聽不厭的神曲。',
         defaultFav: true
       },
-
-      // --- GOLDEN 90s SINGLES ---
-      {
-        id: 'ai-no-mama-ni',
-        title: '即使愛是任性的，我也不願意傷害妳',
-        year: '1993',
-        type: '12th 單曲｜史上最高銷量',
-        category: 'GOLDEN_90S',
-        badge: '202.1萬枚 RECORD',
-        sales: '累計 202.1 萬枚（含2003再發盤）',
-        comment: 'B\'z 銷售量最高單曲！Oricon 週間連續 4 週冠軍、1993 年榜亞軍，是 B\'z 單曲中唯一突破 200 萬枚總銷量紀錄的傳奇單曲。',
-        defaultFav: true
-      },
-      {
-        id: 'love-phantom',
-        title: 'LOVE PHANTOM',
-        year: '1995',
-        type: '90年代代表單曲',
-        category: 'GOLDEN_90S',
-        badge: '90s ICON',
-        sales: '百萬銷量經典',
-        comment: '最輝煌 90 年代最具代表性的單曲之一，戲劇張力十足的編曲與稻葉浩志震撼的超高音唱腔，堪稱 90 年代巔峰象徵。',
-        defaultFav: true
-      },
-      {
-        id: 'tokyo-2nd-beat',
-        title: '東京（《love me, I love you》2nd beat）',
-        year: '1995',
-        type: '2nd beat 隱藏名曲',
-        category: 'GOLDEN_90S',
-        badge: '2ND BEAT GEM',
-        sales: '1995 單曲收錄',
-        comment: '收錄於 1995 年《love me, I love you》的 2nd beat 作品，細膩動人，是 90 年代單曲群中極具代表性的必聽佳作。',
-        defaultFav: false
-      },
-      {
-        id: 'negai',
-        title: '心願（ねがい）',
-        year: '1995',
-        type: '90年代代表單曲',
-        category: 'GOLDEN_90S',
-        badge: '90s HIT',
-        sales: '1995 百萬單曲',
-        comment: '1995 年黃金時期的代表單曲，旋律流暢熱血，展現 90 年代 B\'z 張張名曲的強大實力。',
-        defaultFav: false
-      },
-      {
-        id: 'invisible-one-move',
-        title: '看不見的力量 ～INVISIBLE ONE～ / MOVE',
-        year: '1996',
-        type: '雙A面代表單曲',
-        category: 'GOLDEN_90S',
-        badge: '90s DOUBLE A',
-        sales: '1996 百萬單曲',
-        comment: '1996 年發行的雙主打經典，硬派搖滾能量飽滿，是 90 年代單曲連發時期不可或缺的代表作。',
-        defaultFav: false
-      },
-      {
-        id: 'real-thing-shakes',
-        title: 'Real Thing Shakes',
-        year: '1996',
-        type: '全英文硬搖滾單曲',
-        category: 'GOLDEN_90S',
-        badge: 'HARD ROCK',
-        sales: '1996 百萬單曲',
-        comment: '1996 年震撼樂壇的全英文硬搖滾單曲，松本孝弘厚重吉他 riff 與稻葉浩志狂野高音完美交鋒。',
-        defaultFav: false
-      },
-      {
-        id: 'calling-single',
-        title: 'Calling',
-        year: '1997',
-        type: '老牌抒情搖滾單曲',
-        category: 'GOLDEN_90S',
-        badge: 'ROCK BALLAD',
-        sales: '1997 百萬單曲',
-        comment: '同時收錄於神專《SURVIVE》的老牌抒情搖滾名曲，情緒層層堆疊直至高潮，極具感染力。',
-        defaultFav: true
-      },
-      {
-        id: 'samayoeru-aoi-dangan',
-        title: '徬徨的青色彈丸',
-        year: '1998',
-        type: '90年代末代表單曲',
-        category: 'GOLDEN_90S',
-        badge: '90s HIT',
-        sales: '1998 冠軍單曲',
-        comment: '1998 年發行的疾走感搖滾名曲，充滿速度感與銳利吉他旋律，90 年代必聽代表作。',
-        defaultFav: false
-      },
-      {
-        id: 'home-single',
-        title: 'HOME',
-        year: '1998',
-        type: '90年代溫暖名曲',
-        category: 'GOLDEN_90S',
-        badge: '90s CLASSIC',
-        sales: '1998 百萬單曲',
-        comment: '1998 年發行的經典單曲，溫暖而富有力量，在 B\'z 90 年代單曲群中佔有重要地位。',
-        defaultFav: false
-      },
-      {
-        id: 'giri-giri-chop',
-        title: '極限chop（ギリギリchop）',
-        year: '1999',
-        type: '20世紀末狂熱單曲',
-        category: 'GOLDEN_90S',
-        badge: '1999 PEAK',
-        sales: '1999 冠軍單曲',
-        comment: '1999 年發行的超高速重搖滾單曲，將 20 世紀最熱血、超高音的搖滾能量推向極致！',
-        defaultFav: false
-      },
-
-      // --- POST-2000 SINGLES (2000 - 2015) ---
-      {
-        id: 'konya-tsuki',
-        title: '今夜在看的見月亮的山丘上',
-        year: '2000',
-        type: '2000年代抒情經典',
-        category: 'POST_2000',
-        badge: '2000 MILLENNIUM',
-        sales: '2000 百萬單曲',
-        comment: '2000 年 B\'z 改變曲風後依然最動聽的代表作之一，旋律深情悠遠，傳唱度極高。',
-        defaultFav: false
-      },
-      {
-        id: 'ring-single',
-        title: 'RING',
-        year: '2000',
-        type: '唯一延續90年代曲風單曲',
-        category: 'POST_2000',
-        badge: '90s SPIRIT',
-        sales: '2000 冠軍單曲',
-        comment: '特別值得珍藏的一作——這是 2000 年 B\'z 改變曲風後，唯一一張保有 90 年代曲風靈魂的單曲！',
-        defaultFav: true
-      },
-      {
-        id: 'ultra-soul',
-        title: 'ultra soul',
-        year: '2001',
-        type: '2001 大 HIT 國民神曲',
-        category: 'POST_2000',
-        badge: 'MEGA HIT',
-        sales: '2001 冠軍單曲',
-        comment: '2001 年橫掃全日本的超級大 HIT 單曲，副歌爆發力十足，是 2000 年後最具代表性的現場嗨歌。',
-        defaultFav: false
-      },
-      {
-        id: 'gold-single',
-        title: 'GOLD',
-        year: '2001',
-        type: '2001 抒情搖滾佳作',
-        category: 'POST_2000',
-        badge: '2001 HIT',
-        sales: '2001 冠軍單曲',
-        comment: '2001 年發行的壯闊抒情作品，編曲大氣溫柔，是 2000 年後最好聽的單曲之一。',
-        defaultFav: false
-      },
-      {
-        id: 'ai-no-bakudan',
-        title: '愛的炸彈（愛のバクダン）',
-        year: '2005',
-        type: '2005 爽快搖滾單曲',
-        category: 'POST_2000',
-        badge: '2005 HIT',
-        sales: '2005 冠軍單曲',
-        comment: '2005 年發行的輕快強力搖滾單曲，節奏明快洗腦，充滿正向能量。',
-        defaultFav: false
-      },
-      {
-        id: 'ichibu-to-zenbu',
-        title: '一部分與全部（イチブトゼンブ）',
-        year: '2009',
-        type: '日劇《零秒出手》主題歌',
-        category: 'POST_2000',
-        badge: 'DRAMA THEME',
-        sales: '北川景子主演富士系電視劇主題歌',
-        comment: '2009 年搭配北川景子主演富士系電視劇《零秒出手》主題歌，旋律朗朗上口，成為 2000 年代末期最受歡迎的代表作。',
-        defaultFav: false
-      },
-      {
-        id: 'go-for-it-baby',
-        title: 'GO FOR IT, BABY -記憶的山脈-',
-        year: '2012',
-        type: '2012 第50張單曲',
-        category: 'POST_2000',
-        badge: '50TH SINGLE',
-        sales: '2012 冠軍單曲',
-        comment: '2012 年發行的第 50 張單曲紀念作，吉他旋律俐落有勁，為 2010 年代初的亮眼佳作。',
-        defaultFav: false
-      },
-      {
-        id: 'utopia',
-        title: '烏托邦（ユートピア）',
-        year: '2012',
-        type: '25週年精選收錄新曲',
-        category: 'POST_2000',
-        badge: 'BEST XXV',
-        sales: '收錄於《B\'z The Best XXV 1999-2012》',
-        comment: '2012 年收錄在《B\'z The Best XXV 1999-2012》的精選新曲，旋律明亮動聽。',
-        defaultFav: false
-      },
-      {
-        id: 'uchoten-red',
-        title: '有頂天 / RED',
-        year: '2015',
-        type: '2015 雙代表單曲',
-        category: 'POST_2000',
-        badge: '2015 FINAL GEMS',
-        sales: '2015 冠軍單曲雙作',
-        comment: '2015 年推出的〈有頂天〉與〈RED〉依然保有濃郁搖滾本色，也是個人心中 B\'z 最後兩首稱得上經典名曲的作品。',
-        defaultFav: false
-      },
-
-      // --- ALBUM HIDDEN GEMS ---
       {
         id: 'run-album-track',
         title: 'RUN',
         year: '1992',
         type: '《RUN》同名專輯收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'ALBUM GEM',
-        sales: '1992 專輯《RUN》',
-        comment: '1992 年同名專輯《RUN》的核心曲目，熱血勵志、旋律直擊人心，陪伴無數樂迷奔跑的專輯神曲。',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
+        sales: '1992 同名專輯《RUN》',
+        comment: '1992 年同名專輯《RUN》收錄曲，個人最喜歡的專輯名曲之一，熱血沸騰充滿力量。',
         defaultFav: false
+      },
+      {
+        id: 'ai-no-mama-ni',
+        title: '即使愛是任性的，我也不願意傷害妳',
+        year: '1993',
+        type: '第12張單曲｜史上最高銷量',
+        category: 'GOLDEN_90S',
+        isMasterpiece: true,
+        badge: '202.1萬枚 RECORD',
+        sales: 'Oricon 連4週冠軍・唯一破200萬單曲',
+        comment: 'B\'z 銷售量最高單曲！Oricon 週間單曲榜連續 4 週冠軍、1993 年度年榜亞軍，加計 2003 年再發盤累計總銷量到達 202.1 萬枚，是 B\'z 單曲中唯一突破 200 萬枚總銷量紀錄之單曲。',
+        defaultFav: true
       },
       {
         id: 'haru-7th-blues',
         title: '春',
         year: '1994',
         type: '《The 7th Blues》收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'ALBUM GEM',
-        sales: '1994 雙碟大作《The 7th Blues》',
-        comment: '收錄於 1994 年《The 7th Blues》的抒情佳作，氛圍細膩深沉，展現 B\'z 藍調搖滾時期的成熟韻味。',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
+        sales: '1994 專輯《The 7th Blues》',
+        comment: '1994 年《The 7th Blues》收錄曲，個人最喜歡的專輯名曲之一，深情耐聽。',
         defaultFav: false
       },
       {
-        id: 'yumemigaoka',
-        title: '夢見山丘（夢見が丘）',
+        id: 'love-phantom',
+        title: 'LOVE PHANTOM',
         year: '1995',
-        type: '300萬神專《LOOSE》收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'LOOSE GEM',
-        sales: '1995 專輯《LOOSE》',
-        comment: '收錄於 B\'z 最高銷量專輯《LOOSE》(300萬枚) 的名曲，副歌情緒高亢動人，是專輯曲中的頂級傑作。',
+        type: '90年代最具代表單曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1995 經典單曲',
+        comment: '在最輝煌的 90 年代最具代表性的單曲之一，戲劇張力與超高音唱法堪稱經典。',
         defaultFav: true
+      },
+      {
+        id: 'tokyo-2nd-beat',
+        title: '東京（《love me, I love you》2nd beat）',
+        year: '1995',
+        type: '2nd beat 隱藏神曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '2ND BEAT',
+        sales: '1995《love me, I love you》2nd beat',
+        comment: '收錄於 1995 年《love me, I love you》的 2nd beat，細膩動人，是 90 年代最具代表的神曲之一。',
+        defaultFav: false
+      },
+      {
+        id: 'negai',
+        title: '心願',
+        year: '1995',
+        type: '90年代最具代表單曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1995 經典單曲',
+        comment: '1995 年黃金時期的代表單曲，旋律暢快，展現 90 年代張張名曲的巔峰水準。',
+        defaultFav: false
+      },
+      {
+        id: 'loose-album',
+        title: 'LOOSE（專輯）',
+        year: '1995',
+        type: '史上最高銷量專輯',
+        category: 'GOLDEN_90S',
+        isMasterpiece: true,
+        badge: '300萬枚 RECORD',
+        sales: 'Oricon 銷量高達 300 萬枚',
+        comment: 'B\'z 銷量最高專輯是 1995 年 LOOSE 專輯，Oricon 銷量高達 300 萬枚，並收錄〈夢見山丘〉、〈即使那不是美麗的愛情〉等名曲。',
+        defaultFav: true
+      },
+      {
+        id: 'yumemigaoka',
+        title: '夢見山丘',
+        year: '1995',
+        type: '《LOOSE》收錄曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
+        sales: '1995《LOOSE》收錄曲',
+        comment: '1995 年《LOOSE》收錄曲，個人最喜歡的專輯名曲之一，副歌高亢動人。',
+        defaultFav: false
       },
       {
         id: 'tatoe-utsukushii-ai',
         title: '即使那不是美麗的愛情',
         year: '1995',
-        type: '300萬神專《LOOSE》收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'LOOSE GEM',
-        sales: '1995 專輯《LOOSE》',
-        comment: '同樣收錄在 1995 年《LOOSE》中的必聽專輯名曲，詞曲張力極強，百聽不膩。',
+        type: '《LOOSE》收錄曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
+        sales: '1995《LOOSE》收錄曲',
+        comment: '1995 年《LOOSE》收錄曲，個人最喜歡的專輯名曲之一，張力十足百聽不厭。',
         defaultFav: false
       },
       {
+        id: 'invisible-one-move',
+        title: '看不見的力量 ～INVISIBLE ONE～ / MOVE',
+        year: '1996',
+        type: '90年代最具代表單曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1996 雙主打單曲',
+        comment: '1996 年發行的雙主打代表作，90 年代最具代表性的單曲之一。',
+        defaultFav: false
+      },
+      {
+        id: 'real-thing-shakes',
+        title: 'Real Thing Shakes',
+        year: '1996',
+        type: '90年代全英文硬搖滾單曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1996 全英文單曲',
+        comment: '1996 年震撼樂壇的全英文硬搖滾單曲，90 年代最具代表單曲之一。',
+        defaultFav: false
+      },
+      {
+        id: 'survive-album',
+        title: 'SURVIVE（專輯）',
+        year: '1997',
+        type: '個人最喜歡專輯',
+        category: 'GOLDEN_90S',
+        isMasterpiece: true,
+        badge: '個人最愛神專',
+        sales: 'Oricon 累計 172.3 萬枚',
+        comment: '個人最喜歡的專輯是 1997 年 SURVIVE，Oricon 累計獲得 172.3 萬枚總銷量紀錄。這張專輯絕無冷場，從一開始的重金屬名曲 DEEP KISS 到第二首人氣名曲游泳者阿一直到老牌抒情搖滾 Calling，一氣呵成，相當耐聽。',
+        defaultFav: true
+      },
+      {
+        id: 'calling-single',
+        title: 'Calling',
+        year: '1997',
+        type: '老牌抒情搖滾神曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1997 單曲 /《SURVIVE》收錄',
+        comment: '1997 年發行的老牌抒情搖滾名曲，也是《SURVIVE》專輯一氣呵成的關鍵經典。',
+        defaultFav: true
+      },
+      {
         id: 'oyogibito-yo',
-        title: '游泳者阿（スイマーよ!!）',
+        title: '游泳者阿',
         year: '1997',
         type: '《SURVIVE》第二首人氣名曲',
-        category: 'ALBUM_GEMS',
-        badge: 'SURVIVE GEM',
-        sales: '1997 專輯《SURVIVE》',
-        comment: '收錄於個人最愛專輯《SURVIVE》的第二首人氣名曲，承接〈DEEP KISS〉之後瞬間點燃全場氣氛，疾走感十足！',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
+        sales: '1997《SURVIVE》收錄曲',
+        comment: '1997 年《SURVIVE》收錄曲，承接開場重金屬名曲〈DEEP KISS〉之後的第二首人氣名曲，疾走感十足。',
+        defaultFav: true
+      },
+      {
+        id: 'samayoeru-aoi-dangan',
+        title: '徬徨的青色彈丸',
+        year: '1998',
+        type: '90年代最具代表單曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1998 經典單曲',
+        comment: '1998 年發行的疾走搖滾代表單曲，充滿速度感與 90 年代熱血能量。',
+        defaultFav: false
+      },
+      {
+        id: 'home-single',
+        title: 'HOME',
+        year: '1998',
+        type: '90年代最具代表單曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1998 經典單曲',
+        comment: '1998 年發行的代表單曲，旋律溫暖有力，90 年代必聽佳作。',
+        defaultFav: false
+      },
+      {
+        id: 'giri-giri-chop',
+        title: '極限chop',
+        year: '1999',
+        type: '90年代末熱血代表單曲',
+        category: 'GOLDEN_90S',
+        isMasterpiece: false,
+        badge: '90s 代表單曲',
+        sales: '1999 經典單曲',
+        comment: '1999 年發行的超高速搖滾單曲，將 20 世紀最熱血的搖滾張力推向高峰。',
+        defaultFav: false
+      },
+      {
+        id: 'konya-tsuki',
+        title: '今夜在看的見月亮的山丘上',
+        year: '2000',
+        type: '2000年後最好聽單曲之一',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '2000 精選單曲',
+        sales: '2000 經典單曲',
+        comment: '2000 年 B\'z 改變曲風後，個人最好聽的單曲代表之一，旋律深情動聽。',
+        defaultFav: false
+      },
+      {
+        id: 'ring-single',
+        title: 'RING',
+        year: '2000',
+        type: '2000年後唯一90年代曲風單曲',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '唯一90s曲風',
+        sales: '2000 特別紀念單曲',
+        comment: '〈RING〉是 2000 年後唯一一張保有 90 年代曲風的單曲，在轉型期中格外珍貴動聽。',
         defaultFav: true
       },
       {
         id: 'raging-river',
         title: 'Raging River',
         year: '2000',
-        type: '《ELEVEN》史詩級收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'ALBUM GEM',
+        type: '《ELEVEN》收錄曲',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
         sales: '2000 專輯《ELEVEN》',
-        comment: '收錄於 2000 年專輯《ELEVEN》的長篇史詩搖滾，編曲宏大壯闊，極具震撼力。',
+        comment: '2000 年《ELEVEN》收錄曲，個人最喜歡的專輯名曲之一，編曲壯闊史詩感十足。',
+        defaultFav: false
+      },
+      {
+        id: 'ultra-soul',
+        title: 'ultra soul',
+        year: '2001',
+        type: '2001年大HIT單曲',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '2001 大HIT',
+        sales: '2001 國民級熱血單曲',
+        comment: '2001 年大 HIT 單曲，副歌爆發力十足，成為 2000 年代最具代表性的招牌金曲。',
+        defaultFav: false
+      },
+      {
+        id: 'gold-single',
+        title: 'GOLD',
+        year: '2001',
+        type: '2000年後精選單曲',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '2001 精選單曲',
+        sales: '2001 抒情搖滾單曲',
+        comment: '2001 年發行的抒情搖滾佳作，編曲大氣溫柔，2000 年後最好聽的單曲之一。',
         defaultFav: false
       },
       {
@@ -1029,10 +1018,23 @@
         title: 'CHANGE THE FUTURE',
         year: '2003',
         type: '《BIG MACHINE》收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'ALBUM GEM',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
         sales: '2003 專輯《BIG MACHINE》',
-        comment: '收錄於 2003 年《BIG MACHINE》的精彩曲目，節奏強勁有力，展現千禧年代初期的硬派活力。',
+        comment: '2003 年《BIG MACHINE》收錄曲，個人最喜歡的專輯名曲之一，節奏強勁有力。',
+        defaultFav: false
+      },
+      {
+        id: 'ai-no-bakudan',
+        title: '愛的炸彈',
+        year: '2005',
+        type: '2000年後代表單曲',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '2005 精選單曲',
+        sales: '2005 爽快搖滾單曲',
+        comment: '2005 年發行的爽快搖滾單曲，節奏明快充滿正能量，2000 年後最好聽的單曲之一。',
         defaultFav: false
       },
       {
@@ -1040,10 +1042,11 @@
         title: 'Brighter Day',
         year: '2005',
         type: '《THE CIRCLE》收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'ALBUM GEM',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
         sales: '2005 專輯《THE CIRCLE》',
-        comment: '收錄於 2005 年《THE CIRCLE》的專輯名曲，旋律明亮溫暖，給人滿滿希望感。',
+        comment: '2005 年《THE CIRCLE》收錄曲，個人最喜歡的專輯名曲之一，旋律明亮溫暖。',
         defaultFav: false
       },
       {
@@ -1051,10 +1054,59 @@
         title: '我有你陪伴相隨',
         year: '2007',
         type: '《ACTION》收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'ALBUM GEM',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
         sales: '2007 專輯《ACTION》',
-        comment: '收錄於 2007 年《ACTION》專輯的動人名曲，真摯情感流露，是 2000 年代後期不可錯過的專輯佳作。',
+        comment: '2007 年《ACTION》收錄曲，個人最喜歡的專輯名曲之一，情感真摯動人。',
+        defaultFav: false
+      },
+      {
+        id: 'ichibu-to-zenbu',
+        title: '一部分與全部',
+        year: '2009',
+        type: '富士電視劇《零秒出手》主題歌',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '日劇主題歌',
+        sales: '2009 北川景子主演《零秒出手》主題歌',
+        comment: '2009 年北川景子主演、富士系電視劇《零秒出手》主題歌，旋律輕快抓耳，2000 年後代表作。',
+        defaultFav: false
+      },
+      {
+        id: 'go-for-it-baby',
+        title: 'GO FOR IT, BABY -記憶的山脈-',
+        year: '2012',
+        type: '2012 代表單曲',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '2012 精選單曲',
+        sales: '2012 單曲作品',
+        comment: '2012 年發行的代表單曲，吉他旋律俐落有勁，2000 年後最好聽的單曲之一。',
+        defaultFav: false
+      },
+      {
+        id: 'utopia',
+        title: '烏托邦',
+        year: '2012',
+        type: '精選輯《B\'z The Best XXV 1999-2012》收錄',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: 'BEST XXV 收錄',
+        sales: '2012《B\'z The Best XXV 1999-2012》',
+        comment: '2012 年收錄在精選輯《B\'z The Best XXV 1999-2012》的名曲，旋律明亮動聽。',
+        defaultFav: false
+      },
+      {
+        id: 'uchoten-red',
+        title: '有頂天 / RED',
+        year: '2015',
+        type: '2015 最後經典代表單曲',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '2015 經典雙作',
+        sales: '2015 單曲作品',
+        comment: '2015 年的〈有頂天〉跟〈RED〉依然保有熱血搖滾本色，也是個人心中 B\'z 最後兩首稱得上經典名曲的作品。',
         defaultFav: false
       },
       {
@@ -1062,10 +1114,11 @@
         title: '難以言喻',
         year: '2015',
         type: '《EPIC DAY》收錄曲',
-        category: 'ALBUM_GEMS',
-        badge: 'ALBUM GEM',
+        category: 'POST_2000',
+        isMasterpiece: false,
+        badge: '專輯名曲最愛',
         sales: '2015 專輯《EPIC DAY》',
-        comment: '收錄於 2015 年《EPIC DAY》的個人最愛專輯名曲，韻味十足、耐聽度極高。',
+        comment: '2015 年《EPIC DAY》收錄曲，個人最喜歡的專輯名曲之一，韻味十足相當耐聽。',
         defaultFav: false
       }
     ];
@@ -1077,9 +1130,8 @@
     let favOnly = false;
     let favorites = new Set();
 
-    // Load favorites safely from localStorage
     try {
-      const saved = localStorage.getItem('bz_vermillion_favs');
+      const saved = localStorage.getItem('bz_vermillion_favs_v2');
       if (saved) {
         favorites = new Set(JSON.parse(saved));
       } else {
@@ -1091,51 +1143,44 @@
 
     function saveFavorites() {
       try {
-        localStorage.setItem('bz_vermillion_favs', JSON.stringify([...favorites]));
-      } catch (e) {
-        // Ignore storage restriction in private iframes
-      }
+        localStorage.setItem('bz_vermillion_favs_v2', JSON.stringify([...favorites]));
+      } catch (e) {}
     }
 
-    // ==================== HERO CAROUSEL RENDER ====================
+    // ==================== TOPIC! CAROUSEL RENDER ====================
     function renderHeroSlide(index) {
       const slide = heroSlides[index];
       const container = document.getElementById('heroSlideContent');
-      const eraBadge = document.getElementById('vinylEraBadge');
-      const slideCurrent = document.getElementById('slideCurrent');
-      const slideTotal = document.getElementById('slideTotal');
-
-      slideCurrent.textContent = String(index + 1).padStart(2, '0');
-      slideTotal.textContent = String(heroSlides.length).padStart(2, '0');
-      eraBadge.textContent = slide.era;
+      document.getElementById('slideCurrent').textContent = String(index + 1).padStart(2, '0');
+      document.getElementById('slideTotal').textContent = String(heroSlides.length).padStart(2, '0');
 
       container.innerHTML = `
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-vermillion/20 border border-vermillion/60 text-vermillion-bright font-display text-xs font-bold tracking-[0.16em] uppercase">
-          ${slide.badge}
+        <div>
+          <span class="inline-block bg-vermillion/20 border border-vermillion text-vermillion-bright font-condensed text-xs font-bold tracking-[0.2em] px-3 py-1 uppercase">
+            ${slide.badge}
+          </span>
         </div>
-        <h1 class="text-2xl sm:text-4xl lg:text-[40px] font-black text-white leading-tight tracking-tight">
+        <h3 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white leading-snug">
           ${slide.title}
-        </h1>
+        </h3>
         <p class="text-xs sm:text-sm font-bold text-gold-light tracking-wide">
           ${slide.subtitle}
         </p>
-        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl">
+        <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-3xl">
           ${slide.summary}
         </p>
         <div class="pt-2">
-          <button onclick="openHeroModal(${index})" class="inline-flex items-center gap-2.5 bg-vermillion hover:bg-vermillion-bright text-white font-display font-bold text-xs tracking-[0.2em] uppercase px-6 py-3 rounded transition-all shadow-lg shadow-vermillion/30">
+          <button onclick="openHeroModal(${index})" class="inline-flex items-center gap-2.5 bg-vermillion hover:bg-vermillion-bright text-white font-condensed font-bold text-xs tracking-[0.22em] uppercase px-6 py-3 transition-all">
             READ MORE <span>+</span>
           </button>
         </div>
       `;
 
-      // Update dots
-      const dotsContainer = document.getElementById('slideDots');
-      dotsContainer.innerHTML = heroSlides.map((_, i) => `
+      document.getElementById('slideDots').innerHTML = heroSlides.map((_, i) => `
         <button
           onclick="goToSlide(${i})"
           aria-label="切換至第 ${i + 1} 則焦點"
-          class="h-2.5 rounded-full transition-all ${i === index ? 'w-8 bg-vermillion' : 'w-2.5 bg-zinc-700 hover:bg-zinc-500'}"
+          class="h-2 transition-all ${i === index ? 'w-8 bg-vermillion' : 'w-3 bg-jet-700 hover:bg-zinc-500'}"
         ></button>
       `).join('');
     }
@@ -1145,15 +1190,15 @@
       renderHeroSlide(currentSlide);
     }
 
-    // ==================== CHRONICLE LIST RENDER ====================
+    // ==================== CHRONICLE RENDER ====================
     function renderChronicles() {
       const list = document.getElementById('chronicleList');
       list.innerHTML = chronicles.map((item, idx) => `
-        <article onclick="openChronicleModal(${idx})" class="group py-5 sm:py-6 px-2 sm:px-4 hover:bg-jet-900/80 transition-colors cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-6">
+        <article onclick="openChronicleModal(${idx})" class="group py-5 sm:py-6 px-3 sm:px-5 hover:bg-jet-850 transition-colors cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-6">
           <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 flex-1">
             <div class="flex items-center gap-3 shrink-0">
               <time class="font-condensed text-sm sm:text-base font-bold tracking-wider text-zinc-400 w-24">${item.date}</time>
-              <span class="bg-vermillion text-white font-display font-bold text-[10px] tracking-[0.15em] px-2.5 py-0.5 rounded-sm uppercase">
+              <span class="bg-vermillion text-white font-condensed font-bold text-[11px] tracking-[0.16em] px-2.5 py-0.5 uppercase">
                 ${item.tag}
               </span>
             </div>
@@ -1161,7 +1206,7 @@
               ${item.title}
             </h3>
           </div>
-          <div class="flex items-center gap-1.5 text-xs font-display font-bold tracking-widest text-zinc-400 group-hover:text-white uppercase shrink-0 self-end md:self-center">
+          <div class="flex items-center gap-1.5 font-condensed text-xs font-bold tracking-[0.2em] text-zinc-400 group-hover:text-white uppercase shrink-0 self-end md:self-center">
             <span>Read More</span>
             <span class="text-vermillion-bright group-hover:translate-x-1 transition-transform">→</span>
           </div>
@@ -1173,14 +1218,14 @@
     function renderDiscography() {
       const grid = document.getElementById('discographyGrid');
       const emptyState = document.getElementById('emptyState');
-      const totalCountEl = document.getElementById('totalTrackCount');
-      const favCountBadge = document.getElementById('favCountBadge');
-
-      totalCountEl.textContent = tracks.length;
-      favCountBadge.textContent = favorites.size;
+      document.getElementById('totalTrackCount').textContent = tracks.length;
+      document.getElementById('favCountBadge').textContent = favorites.size;
 
       const filtered = tracks.filter(track => {
-        const matchesCat = activeCategory === 'ALL' || track.category === activeCategory;
+        const matchesCat =
+          activeCategory === 'ALL' ||
+          (activeCategory === 'TOP_MASTERPIECE' && track.isMasterpiece) ||
+          track.category === activeCategory;
         const matchesFav = !favOnly || favorites.has(track.id);
         const q = searchQuery.trim().toLowerCase();
         const matchesSearch = !q ||
@@ -1201,13 +1246,12 @@
       grid.innerHTML = filtered.map(track => {
         const isFav = favorites.has(track.id);
         return `
-          <div class="bg-jet-850 border border-jet-700 rounded-lg p-5 sm:p-6 flex flex-col justify-between card-hover">
+          <div class="bg-jet-850 border border-jet-700 p-5 sm:p-6 flex flex-col justify-between card-hover">
             <div>
-              <!-- Card Header: Year + Badge + Favorite Star -->
               <div class="flex items-center justify-between gap-2 mb-3">
                 <div class="flex items-center gap-2">
                   <span class="font-condensed text-sm font-bold text-zinc-400 tracking-wider">${track.year}</span>
-                  <span class="text-[10px] font-display font-bold tracking-wider uppercase px-2 py-0.5 rounded-sm ${track.category === 'TOP_PICKS' ? 'bg-vermillion text-white' : 'bg-jet-900 text-vermillion-bright border border-vermillion/40'}">
+                  <span class="font-condensed text-[11px] font-bold tracking-wider uppercase px-2 py-0.5 ${track.isMasterpiece ? 'bg-vermillion text-white' : 'bg-[#070707] text-vermillion-bright border border-vermillion/50'}">
                     ${track.badge}
                   </span>
                 </div>
@@ -1215,28 +1259,25 @@
                   onclick="toggleFavorite(event, '${track.id}')"
                   aria-label="切換星標最愛"
                   title="${isFav ? '取消星標最愛' : '加入星標最愛'}"
-                  class="w-8 h-8 rounded flex items-center justify-center border ${isFav ? 'border-gold/60 bg-gold/10 text-gold' : 'border-jet-700 bg-jet-900 text-zinc-500 hover:text-gold'} transition-colors"
+                  class="w-8 h-8 flex items-center justify-center border ${isFav ? 'border-gold bg-gold/15 text-gold' : 'border-jet-700 bg-[#070707] text-zinc-500 hover:text-gold'} transition-colors"
                 >
                   ${isFav ? '★' : '☆'}
                 </button>
               </div>
 
-              <!-- Track / Album Title -->
               <h3 onclick="openTrackModal('${track.id}')" class="text-lg font-black text-white hover:text-vermillion-bright transition-colors cursor-pointer leading-snug">
                 ${track.title}
               </h3>
               <p class="text-xs text-zinc-400 mt-1">${track.type} • <span class="text-gold-light">${track.sales}</span></p>
 
-              <!-- Personal Commentary Excerpt -->
               <p class="mt-3.5 text-xs sm:text-sm text-zinc-300 leading-relaxed line-clamp-3">
                 ${track.comment}
               </p>
             </div>
 
-            <!-- Card Footer Action -->
-            <div class="mt-5 pt-3.5 border-t border-jet-700/80 flex items-center justify-between">
-              <span class="text-[11px] font-display tracking-widest text-zinc-500 uppercase">VERMILLION ARCHIVE</span>
-              <button onclick="openTrackModal('${track.id}')" class="text-xs font-display font-bold tracking-wider text-vermillion-bright hover:text-white uppercase flex items-center gap-1 transition-colors">
+            <div class="mt-5 pt-3.5 border-t border-jet-700 flex items-center justify-between">
+              <span class="font-condensed text-[11px] tracking-[0.2em] text-zinc-500 uppercase">VERMILLION ARCHIVE</span>
+              <button onclick="openTrackModal('${track.id}')" class="font-condensed text-xs font-bold tracking-[0.18em] text-vermillion-bright hover:text-white uppercase flex items-center gap-1 transition-colors">
                 樂評詳情 <span>→</span>
               </button>
             </div>
@@ -1258,24 +1299,19 @@
 
     // ==================== MODAL HANDLERS ====================
     const modal = document.getElementById('detailModal');
-    const modalBadge = document.getElementById('modalBadge');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMeta = document.getElementById('modalMeta');
-    const modalBody = document.getElementById('modalBody');
-    const modalExtraBox = document.getElementById('modalExtraBox');
-    const modalComment = document.getElementById('modalComment');
 
     function showModal({ badge, title, meta, body, comment }) {
-      modalBadge.textContent = badge;
-      modalTitle.textContent = title;
-      modalMeta.textContent = meta || '';
-      modalBody.textContent = body;
+      document.getElementById('modalBadge').textContent = badge;
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalMeta').textContent = meta || '';
+      document.getElementById('modalBody').textContent = body;
 
+      const extraBox = document.getElementById('modalExtraBox');
       if (comment) {
-        modalExtraBox.classList.remove('hidden');
-        modalComment.textContent = comment;
+        extraBox.classList.remove('hidden');
+        document.getElementById('modalComment').textContent = comment;
       } else {
-        modalExtraBox.classList.add('hidden');
+        extraBox.classList.add('hidden');
       }
 
       modal.classList.remove('hidden');
@@ -1291,22 +1327,12 @@
 
     function openHeroModal(index) {
       const s = heroSlides[index];
-      showModal({
-        badge: s.badge,
-        title: s.title,
-        meta: s.subtitle,
-        body: s.modalDetail
-      });
+      showModal({ badge: s.badge, title: s.title, meta: s.subtitle, body: s.modalDetail });
     }
 
     function openChronicleModal(index) {
       const c = chronicles[index];
-      showModal({
-        badge: `${c.date} | ${c.tag}`,
-        title: c.title,
-        meta: 'B\'z 歷史紀錄與榮耀年表',
-        body: c.detail
-      });
+      showModal({ badge: `${c.date} | ${c.tag}`, title: c.title, meta: 'B\'z 歷史紀錄與榮耀年表', body: c.detail });
     }
 
     function openTrackModal(id) {
@@ -1327,7 +1353,6 @@
       renderChronicles();
       renderDiscography();
 
-      // Auto-advance hero carousel every 7 seconds
       let autoSlide = setInterval(() => goToSlide(currentSlide + 1), 7000);
 
       document.getElementById('prevSlideBtn').addEventListener('click', () => {
@@ -1340,28 +1365,25 @@
         goToSlide(currentSlide + 1);
       });
 
-      // Category tabs
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           document.querySelectorAll('.tab-btn').forEach(b => {
-            b.classList.remove('bg-vermillion', 'text-white', 'active');
-            b.classList.add('bg-jet-850', 'text-zinc-300', 'border', 'border-jet-700');
+            b.classList.remove('bg-vermillion', 'text-white', 'border-vermillion', 'active');
+            b.classList.add('bg-jet-850', 'text-zinc-300', 'border-jet-700');
           });
-          btn.classList.remove('bg-jet-850', 'text-zinc-300', 'border', 'border-jet-700');
-          btn.classList.add('bg-vermillion', 'text-white', 'active');
+          btn.classList.remove('bg-jet-850', 'text-zinc-300', 'border-jet-700');
+          btn.classList.add('bg-vermillion', 'text-white', 'border-vermillion', 'active');
 
           activeCategory = btn.getAttribute('data-cat');
           renderDiscography();
         });
       });
 
-      // Search input
       document.getElementById('searchInput').addEventListener('input', (e) => {
         searchQuery = e.target.value;
         renderDiscography();
       });
 
-      // Favorite toggle filter
       const favOnlyBtn = document.getElementById('favOnlyBtn');
       const favStarIcon = document.getElementById('favStarIcon');
       favOnlyBtn.addEventListener('click', () => {
@@ -1376,7 +1398,6 @@
         renderDiscography();
       });
 
-      // Reset filter button
       document.getElementById('resetFilterBtn').addEventListener('click', () => {
         activeCategory = 'ALL';
         searchQuery = '';
@@ -1387,39 +1408,30 @@
 
         document.querySelectorAll('.tab-btn').forEach((b, i) => {
           if (i === 0) {
-            b.classList.remove('bg-jet-850', 'text-zinc-300', 'border', 'border-jet-700');
-            b.classList.add('bg-vermillion', 'text-white', 'active');
+            b.classList.remove('bg-jet-850', 'text-zinc-300', 'border-jet-700');
+            b.classList.add('bg-vermillion', 'text-white', 'border-vermillion', 'active');
           } else {
-            b.classList.remove('bg-vermillion', 'text-white', 'active');
-            b.classList.add('bg-jet-850', 'text-zinc-300', 'border', 'border-jet-700');
+            b.classList.remove('bg-vermillion', 'text-white', 'border-vermillion', 'active');
+            b.classList.add('bg-jet-850', 'text-zinc-300', 'border-jet-700');
           }
         });
         renderDiscography();
       });
 
-      // Mobile menu toggle
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
-      mobileMenuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
+      mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
       document.querySelectorAll('.mobile-nav-link').forEach(link => {
         link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
       });
 
-      // Modal close listeners
       document.getElementById('closeModalBtn').addEventListener('click', closeModal);
       document.getElementById('modalConfirmCloseBtn').addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-      });
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
       document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-          closeModal();
-        }
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
       });
 
-      // PageTop button visibility & smooth scroll
       const pageTopBtn = document.getElementById('pageTopBtn');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
@@ -1428,9 +1440,7 @@
           pageTopBtn.classList.add('opacity-0', 'pointer-events-none');
         }
       });
-      pageTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      pageTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     });
   </script>
 </body>
