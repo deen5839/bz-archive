@@ -344,7 +344,7 @@
             數學教師執照與斷裂的吉他弦：傳奇起點〈Let It Be〉
           </h3>
           <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
-            稻葉浩志原本立志成為一名數學老師，大學畢業後甚至已經順利取得了數學教師執照，但心中對音樂與歌唱的熱情始終未曾熄滅。就在這個十字路口，當時正籌組新樂團的吉他手松本孝弘啟動了主唱徵選，稻葉浩志便抱著一試的心情前往面試。試音當天，當稻葉唱著披頭四的經典名曲〈Let It Be〉到一半時，松本手中的吉他弦竟突然應聲斷裂——然而就在那一瞬間，松本孝弘被他極具穿透力的嗓音深深震撼，當場拍板說道：「就決定是你了！」1988 年，日本搖滾史上最偉大的傳奇組合 B'z 就此正式誕生。
+稻葉浩志原本立志成為一名數學老師，大學畢業後甚至已經順利取得了數學教師執照，但心中對音樂與歌唱的熱情始終未曾熄滅。就在這個十字路口，當時正籌組新樂團的吉他手松本孝弘啟動了主唱徵選，稻葉浩志便抱著一試的心情前往面試。試音當天，當稻葉唱著披頭四的經典名曲〈Let It Be〉到一半時，松本手中的吉他弦竟突然應聲斷裂——然而就在那一瞬間，松本孝弘被他極具穿透力的嗓音深深震撼，當場拍板說道：「就決定是你了！」緊接著在決定團名時，兩人先定下要把字母 Z 放在最後，工作人員原本提議取名為「A'z」，但唸起來的發音卻很像「AIDS」；於是松本孝弘與稻葉浩志決定改用英文字母的第二個字母 B 作為開頭，1988 年，日本搖滾史上最偉大的傳奇組合「B'z」就此正式誕生。
           </p>
         </div>
 
@@ -1518,25 +1518,25 @@
       {
         id: 'heat',
         title: 'HEAT',
-        year: '2012',
-        type: '2012 25週年精選輯收錄新曲',
+        year: '2013',
+        type: '2013 25週年精選輯收錄新曲',
         category: 'POST_2000',
         isMasterpiece: false,
         badge: '25TH BEST',
         sales: '收錄於《B\'z The Best XXV 1988-1998》',
-        comment: '收錄於 2012 年 25 週年紀念精選《B\'z The Best XXV 1988-1998》的全新創作曲，充滿盛夏熱浪般的疾走搖滾節奏與陽光感，聽起來痛快無比。',
+        comment: '收錄於 2013 年 25 週年紀念精選《B\'z The Best XXV 1988-1998》的全新創作曲，充滿盛夏熱浪般的疾走搖滾節奏與陽光感，聽起來痛快無比。',
         defaultFav: true
       },
       {
         id: 'utopia',
         title: '烏托邦',
-        year: '2012',
+        year: '2013',
         type: '精選輯《B\'z The Best XXV 1999-2012》收錄',
         category: 'POST_2000',
         isMasterpiece: false,
         badge: 'BEST XXV 收錄',
-        sales: '2012《B\'z The Best XXV 1999-2012》',
-        comment: '2012 年收錄在精選輯《B\'z The Best XXV 1999-2012》的名曲，旋律明亮動聽。',
+        sales: '2013《B\'z The Best XXV 1999-2012》',
+        comment: '2013 年收錄在精選輯《B\'z The Best XXV 1999-2012》的名曲，旋律明亮動聽。',
         defaultFav: false
       },
       {
@@ -2026,6 +2026,63 @@
       window.addEventListener('DOMContentLoaded', function () {
         const initialHash = window.location.hash.replace('#', '') || 'topic';
         switchTab(initialHash, false);
+      });
+    })();
+  </script>
+
+  <!-- Floating Background Music Player (B'z - SAFETY LOVE Pleasure'91) -->
+  <div id="bgmPlayerWrap" class="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 bg-black/90 backdrop-blur-md border border-[#C8102E]/70 px-3.5 py-2 shadow-[0_0_20px_rgba(200,16,46,0.35)]">
+    <button id="bgmToggleBtn" type="button" aria-label="背景音樂播放與暫停" class="flex items-center gap-2.5 text-left group focus:outline-none">
+      <span id="bgmIcon" class="w-7 h-7 flex items-center justify-center bg-[#C8102E] text-white text-xs font-bold transition-transform group-hover:scale-105">
+        ▶
+      </span>
+      <div class="leading-tight pr-1">
+        <div class="font-condensed text-[10px] font-bold tracking-[0.2em] text-[#C8102E] uppercase">
+          BGM // PLEASURE '91
+        </div>
+        <div id="bgmStatusText" class="text-xs text-zinc-200 font-medium">
+          點擊播放 SAFETY LOVE
+        </div>
+      </div>
+    </button>
+    <!-- Hidden YouTube Audio Container -->
+    <div id="ytBgmMount" class="w-0 h-0 overflow-hidden pointer-events-none"></div>
+  </div>
+
+  <script>
+    (function () {
+      const VIDEO_ID = 'ubMjs4Y9S4U';
+      const btn = document.getElementById('bgmToggleBtn');
+      const icon = document.getElementById('bgmIcon');
+      const statusText = document.getElementById('bgmStatusText');
+      const mount = document.getElementById('ytBgmMount');
+      let isPlaying = false;
+      let iframeLoaded = false;
+
+      btn.addEventListener('click', function () {
+        if (!iframeLoaded) {
+          mount.innerHTML = `<iframe id="ytBgmFrame" width="1" height="1" src="https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&loop=1&playlist=${VIDEO_ID}&enablejsapi=1" title="B'z SAFETY LOVE BGM" frameborder="0" allow="autoplay; encrypted-media"></iframe>`;
+          iframeLoaded = true;
+          isPlaying = true;
+          icon.textContent = '❚❚';
+          statusText.textContent = '播放中：SAFETY LOVE';
+          return;
+        }
+
+        const frame = document.getElementById('ytBgmFrame');
+        if (!frame) return;
+
+        if (isPlaying) {
+          frame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+          isPlaying = false;
+          icon.textContent = '▶';
+          statusText.textContent = '已暫停：SAFETY LOVE';
+        } else {
+          frame.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+          isPlaying = true;
+          icon.textContent = '❚❚';
+          statusText.textContent = '播放中：SAFETY LOVE';
+        }
       });
     })();
   </script>
