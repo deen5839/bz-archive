@@ -165,7 +165,7 @@
         <a href="#chronicle" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">CHRONICLE</a>
         <a href="#biography" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">BIOGRAPHY</a>
         <a href="#discography" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">DISCOGRAPHY</a>
-        <a href="#gallery" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">GALLERY</a>
+        <a href="#media" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">media</a>
         <a href="#link" class="font-condensed text-sm font-semibold tracking-[0.2em] text-zinc-200 hover:text-vermillion-bright transition-colors uppercase">LINK</a>
       </nav>
 
@@ -183,7 +183,7 @@
       <a href="#chronicle" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">CHRONICLE</a>
       <a href="#biography" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">BIOGRAPHY</a>
       <a href="#discography" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">DISCOGRAPHY</a>
-      <a href="#gallery" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">GALLERY</a>
+      <a href="#media" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">MEDIA</a>
       <a href="#link" class="mobile-nav-link block py-2.5 px-3 border-l-2 border-transparent hover:border-vermillion font-condensed text-sm font-bold tracking-[0.22em] text-zinc-200 hover:bg-vermillion/15 hover:text-white uppercase">LINK</a>
     </div>
   </header>
@@ -489,8 +489,8 @@
         </div>
       </div>
     </section>
-<!-- ==================== VISUAL GALLERY SECTION ==================== -->
-    <section id="gallery" class="py-16 sm:py-24 bg-[#070707] border-b border-jet-700">
+<!-- ==================== VISUAL MEDIA SECTION ==================== -->
+    <section id="media" class="py-16 sm:py-24 bg-[#070707] border-b border-jet-700">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="mb-10 sm:mb-14">
@@ -498,7 +498,7 @@
             VISUAL ARCHIVE &amp; LIVE MOMENTS
           </p>
           <h2 class="font-condensed font-bold text-3xl sm:text-5xl text-white tracking-[0.06em] uppercase mt-1.5">
-            GALLERY
+            media
           </h2>
           <p class="text-zinc-400 text-sm sm:text-base mt-2">
             歷年宣傳視覺、LIVE-GYM 現場震撼與好萊塢搖滾大道榮耀瞬間（點擊圖片可放大檢視）
@@ -1585,5 +1585,112 @@
     box.classList.remove('flex');
   }
 </script>
+<!-- ==================== SPA 多分頁無重整切換腳本 ==================== -->
+  <style>
+    /* 目前作用中的導覽列頁籤亮起朱紅色底線與高亮文字 */
+    .nav-tab-active {
+      color: #FF2A4B !important;
+      border-bottom: 2px solid #C8102E;
+      padding-bottom: 4px;
+    }
+    .mobile-nav-active {
+      border-left-color: #C8102E !important;
+      background-color: rgba(200, 16, 46, 0.15) !important;
+      color: #FFFFFF !important;
+    }
+  </style>
+
+  <script>
+    (function () {
+      // 定義 6 個分頁對應的區塊 ID（首頁預設顯示封面 + TOPIC）
+      const tabSections = {
+        top: ['hero', 'topic'],
+        topic: ['hero', 'topic'],
+        chronicle: ['chronicle'],
+        biography: ['biography'],
+        discography: ['discography'],
+        media: ['media'],
+        link: ['link']
+      };
+
+      // 自動幫第一個封面 <section> 加上 id="hero"，方便分頁控制
+      const mainEl = document.querySelector('main');
+      if (mainEl) {
+        const firstSection = mainEl.querySelector('section');
+        if (firstSection && !firstSection.id) {
+          firstSection.id = 'hero';
+        }
+      }
+
+      function switchTab(tabKey, pushHistory = true) {
+        const targetKey = tabSections[tabKey] ? tabKey : 'topic';
+        const visibleIds = tabSections[targetKey];
+
+        // 1. 顯示目標分頁區塊，隱藏其他所有分頁區塊
+        const allIds = ['hero', 'topic', 'chronicle', 'biography', 'discography', 'media', 'link'];
+        allIds.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            if (visibleIds.includes(id)) {
+              el.classList.remove('hidden');
+            } else {
+              el.classList.add('hidden');
+            }
+          }
+        });
+
+        // 2. 更新電腦版與手機版導覽列的目前頁籤高亮狀態
+        const activeHref = (targetKey === 'top') ? '#topic' : `#${targetKey}`;
+        document.querySelectorAll('header nav a').forEach(link => {
+          if (link.getAttribute('href') === activeHref) {
+            link.classList.add('nav-tab-active');
+          } else {
+            link.classList.remove('nav-tab-active');
+          }
+        });
+
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+          if (link.getAttribute('href') === activeHref) {
+            link.classList.add('mobile-nav-active');
+          } else {
+            link.classList.remove('mobile-nav-active');
+          }
+        });
+
+        // 3. 自動收起手機下拉選單並捲動回頁面最頂端
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // 4. 同步更新網址 Hash（支援瀏覽器上一頁與直接分享分頁連結）
+        if (pushHistory && window.location.hash !== `#${targetKey}`) {
+          history.pushState(null, '', `#${targetKey}`);
+        }
+      }
+
+      // 攔截站內所有分頁連結點擊（包含導覽列、左上角 LOGO、封面上的 MY PICKS 按鈕）
+      document.addEventListener('click', function (e) {
+        const anchor = e.target.closest('a[href^="#"]');
+        if (!anchor) return;
+        const hash = anchor.getAttribute('href').replace('#', '');
+        if (tabSections[hash]) {
+          e.preventDefault();
+          switchTab(hash, true);
+        }
+      });
+
+      // 支援瀏覽器「上一頁 / 下一頁」切換分頁
+      window.addEventListener('popstate', function () {
+        const hash = window.location.hash.replace('#', '') || 'topic';
+        switchTab(hash, false);
+      });
+
+      // 網頁初次載入時依據網址 Hash 顯示對應分頁
+      window.addEventListener('DOMContentLoaded', function () {
+        const initialHash = window.location.hash.replace('#', '') || 'topic';
+        switchTab(initialHash, false);
+      });
+    })();
+  </script>
 </body>
 </html>
