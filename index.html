@@ -2030,19 +2030,19 @@
     })();
   </script>
 
-  <!-- Floating Background Music Player (Mobile & Desktop Compatible) -->
-  <div id="bgmPlayerWrap" class="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
+  <!-- Floating Background Music Player (Compact Mobile & Desktop Compatible) -->
+  <div id="bgmPlayerWrap" class="fixed bottom-3 right-3 sm:bottom-5 sm:right-5 z-40 flex flex-col items-end gap-2">
     <!-- Mini Video Box (220x124 satisfies mobile browser audio policy) -->
     <div id="ytBgmBox" class="hidden w-[220px] h-[124px] bg-black border border-[#C8102E] shadow-[0_0_24px_rgba(200,16,46,0.5)] overflow-hidden">
       <div id="ytBgmMount" class="w-full h-full"></div>
     </div>
 
-    <!-- Toggle Pill Button -->
-    <button id="bgmToggleBtn" type="button" aria-label="背景音樂播放與收合" class="flex items-center gap-2.5 bg-black/90 backdrop-blur-md border border-[#C8102E]/80 px-3.5 py-2 shadow-[0_0_20px_rgba(200,16,46,0.35)] text-left group focus:outline-none">
-      <span id="bgmIcon" class="w-7 h-7 flex items-center justify-center bg-[#C8102E] text-white text-xs font-bold transition-transform group-hover:scale-105">
+    <!-- Compact Toggle Button: Mobile = Tiny 44px Circle / Desktop = Slim Pill -->
+    <button id="bgmToggleBtn" type="button" aria-label="背景音樂播放與收合" title="背景音樂：SAFETY LOVE (Pleasure '91)" class="flex items-center justify-center sm:justify-start gap-2.5 w-11 h-11 sm:w-auto sm:h-auto rounded-full sm:rounded-none bg-black/85 backdrop-blur-md border border-[#C8102E]/80 sm:px-3.5 sm:py-2 shadow-[0_0_16px_rgba(200,16,46,0.4)] text-left group focus:outline-none">
+      <span id="bgmIcon" class="w-8 h-8 sm:w-7 sm:h-7 rounded-full sm:rounded-none flex items-center justify-center bg-[#C8102E] text-white text-xs font-bold transition-transform group-hover:scale-105">
         ♫
       </span>
-      <div class="leading-tight pr-1">
+      <div class="hidden sm:block leading-tight pr-1">
         <div class="font-condensed text-[10px] font-bold tracking-[0.2em] text-[#C8102E] uppercase">
           BGM // PLEASURE '91
         </div>
@@ -2071,7 +2071,7 @@
           isOpen = true;
           box.classList.remove('hidden');
           icon.textContent = '▼';
-          statusText.textContent = '點視窗播放 / 點此縮小';
+          if (statusText) statusText.textContent = '點視窗播放 / 點此縮小';
           return;
         }
 
@@ -2079,12 +2079,11 @@
         if (isOpen) {
           box.classList.remove('hidden');
           icon.textContent = '▼';
-          statusText.textContent = '點此縮小播放器';
+          if (statusText) statusText.textContent = '點此縮小播放器';
         } else {
-          // 用視覺縮小代替 display:none，保持音樂在背景繼續播放不中斷
           box.classList.add('hidden');
           icon.textContent = '♫';
-          statusText.textContent = 'SAFETY LOVE 播放中（點此展開）';
+          if (statusText) statusText.textContent = 'BGM 播放中（點此展開）';
         }
       });
     })();
