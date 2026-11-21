@@ -2030,58 +2030,61 @@
     })();
   </script>
 
-  <!-- Floating Background Music Player (B'z - SAFETY LOVE Pleasure'91) -->
-  <div id="bgmPlayerWrap" class="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 bg-black/90 backdrop-blur-md border border-[#C8102E]/70 px-3.5 py-2 shadow-[0_0_20px_rgba(200,16,46,0.35)]">
-    <button id="bgmToggleBtn" type="button" aria-label="背景音樂播放與暫停" class="flex items-center gap-2.5 text-left group focus:outline-none">
+  <!-- Floating Background Music Player (Mobile & Desktop Compatible) -->
+  <div id="bgmPlayerWrap" class="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-2">
+    <!-- Mini Video Box (220x124 satisfies mobile browser audio policy) -->
+    <div id="ytBgmBox" class="hidden w-[220px] h-[124px] bg-black border border-[#C8102E] shadow-[0_0_24px_rgba(200,16,46,0.5)] overflow-hidden">
+      <div id="ytBgmMount" class="w-full h-full"></div>
+    </div>
+
+    <!-- Toggle Pill Button -->
+    <button id="bgmToggleBtn" type="button" aria-label="背景音樂播放與收合" class="flex items-center gap-2.5 bg-black/90 backdrop-blur-md border border-[#C8102E]/80 px-3.5 py-2 shadow-[0_0_20px_rgba(200,16,46,0.35)] text-left group focus:outline-none">
       <span id="bgmIcon" class="w-7 h-7 flex items-center justify-center bg-[#C8102E] text-white text-xs font-bold transition-transform group-hover:scale-105">
-        ▶
+        ♫
       </span>
       <div class="leading-tight pr-1">
         <div class="font-condensed text-[10px] font-bold tracking-[0.2em] text-[#C8102E] uppercase">
           BGM // PLEASURE '91
         </div>
         <div id="bgmStatusText" class="text-xs text-zinc-200 font-medium">
-          點擊播放 SAFETY LOVE
+          開啟 SAFETY LOVE 播放器
         </div>
       </div>
     </button>
-    <!-- Hidden YouTube Audio Container -->
-    <div id="ytBgmMount" class="w-0 h-0 overflow-hidden pointer-events-none"></div>
   </div>
 
   <script>
     (function () {
       const VIDEO_ID = 'ubMjs4Y9S4U';
       const btn = document.getElementById('bgmToggleBtn');
+      const box = document.getElementById('ytBgmBox');
       const icon = document.getElementById('bgmIcon');
       const statusText = document.getElementById('bgmStatusText');
       const mount = document.getElementById('ytBgmMount');
-      let isPlaying = false;
       let iframeLoaded = false;
+      let isOpen = false;
 
       btn.addEventListener('click', function () {
         if (!iframeLoaded) {
-          mount.innerHTML = `<iframe id="ytBgmFrame" width="1" height="1" src="https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&loop=1&playlist=${VIDEO_ID}&enablejsapi=1" title="B'z SAFETY LOVE BGM" frameborder="0" allow="autoplay; encrypted-media"></iframe>`;
+          mount.innerHTML = `<iframe id="ytBgmFrame" class="w-full h-full" src="https://www.youtube.com/embed/${VIDEO_ID}?autoplay=1&loop=1&playlist=${VIDEO_ID}&playsinline=1" title="B'z SAFETY LOVE BGM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
           iframeLoaded = true;
-          isPlaying = true;
-          icon.textContent = '❚❚';
-          statusText.textContent = '播放中：SAFETY LOVE';
+          isOpen = true;
+          box.classList.remove('hidden');
+          icon.textContent = '▼';
+          statusText.textContent = '點視窗播放 / 點此縮小';
           return;
         }
 
-        const frame = document.getElementById('ytBgmFrame');
-        if (!frame) return;
-
-        if (isPlaying) {
-          frame.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-          isPlaying = false;
-          icon.textContent = '▶';
-          statusText.textContent = '已暫停：SAFETY LOVE';
+        isOpen = !isOpen;
+        if (isOpen) {
+          box.classList.remove('hidden');
+          icon.textContent = '▼';
+          statusText.textContent = '點此縮小播放器';
         } else {
-          frame.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-          isPlaying = true;
-          icon.textContent = '❚❚';
-          statusText.textContent = '播放中：SAFETY LOVE';
+          // 用視覺縮小代替 display:none，保持音樂在背景繼續播放不中斷
+          box.classList.add('hidden');
+          icon.textContent = '♫';
+          statusText.textContent = 'BGM 播放中（點此展開）';
         }
       });
     })();
