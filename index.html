@@ -994,39 +994,62 @@
           </a>
         </div>
       </div>
-    <!-- ==================== FAN GUESTBOOK (GISCUS COMMENTS) ==================== -->
+   <!-- ==================== FAN GUESTBOOK (GOOGLE SHEETS & FORM) ==================== -->
         <div class="mt-16 pt-12 border-t border-jet-700">
-          <div class="mb-8">
-            <p class="font-condensed text-xs sm:text-sm font-bold tracking-[0.26em] text-vermillion-bright uppercase">
-              FAN GUESTBOOK &amp; MESSAGES
-            </p>
-            <h3 class="font-condensed font-bold text-2xl sm:text-4xl text-white tracking-[0.06em] uppercase mt-1.5">
-              樂迷留言板
-            </h3>
-            <p class="text-zinc-400 text-sm mt-2">
-              歡迎留下你最愛的 B'z 神曲、LIVE-GYM 回憶，或對這座典藏館的感想（登入 GitHub 即可留言）
-            </p>
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+            <div>
+              <p class="font-condensed text-xs sm:text-sm font-bold tracking-[0.26em] text-vermillion-bright uppercase">
+                FAN GUESTBOOK &amp; MESSAGES
+              </p>
+              <h3 class="font-condensed font-bold text-2xl sm:text-4xl text-white tracking-[0.06em] uppercase mt-1.5">
+                樂迷留言板
+              </h3>
+              <p class="text-zinc-400 text-sm mt-2">
+                免登入直接留言！歡迎分享你最愛的 B'z 神曲、LIVE-GYM 回憶，或給站長的鼓勵（目前共 <span id="guestbookCount" class="text-white font-bold">0</span> 則留言）
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2.5">
+              <button type="button" id="toggleGuestbookFormBtn" onclick="toggleGuestbookForm()" class="px-4 py-2.5 bg-vermillion hover:bg-vermillion-bright text-white font-condensed text-xs font-bold tracking-[0.18em] uppercase transition-colors">
+                ✎ 我要留言（免登入）
+              </button>
+              <button type="button" onclick="loadGuestbookMessages(true)" class="px-3.5 py-2.5 bg-jet-850 hover:border-vermillion text-zinc-300 hover:text-white border border-jet-700 font-condensed text-xs font-bold tracking-[0.15em] uppercase transition-colors">
+                ↻ 重新整理
+              </button>
+            </div>
           </div>
 
-          <div class="bg-jet-900/80 border border-jet-700 p-4 sm:p-6">
-            <script src="https://giscus.app/client.js"
-                    data-repo="deen5839/bz-archive"
-                    data-repo-id="R_kgDOV0cKtQ"
-                    data-category="General"
-                    data-category-id="DIC_kwDOV0cKtc4DLtSi"
-                    data-mapping="pathname"
-                    data-strict="0"
-                    data-reactions-enabled="1"
-                    data-emit-metadata="0"
-                    data-input-position="bottom"
-                    data-theme="dark"
-                    data-lang="zh-TW"
-                    crossorigin="anonymous"
-                    async>
-            </script>
+          <!-- Collapsible Embedded Google Form -->
+          <div id="guestbookFormPanel" class="hidden mb-10 bg-jet-900 border border-vermillion/70 p-4 sm:p-6">
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-4 border-b border-jet-700">
+              <p class="text-xs sm:text-sm text-zinc-200">
+                填寫完成按下「提交」後，點擊上方 <strong class="text-vermillion-bright">「↻ 重新整理」</strong> 即可在下方看到你的留言！
+              </p>
+              <a href="https://forms.gle/CHwK1s8s9eC2hANT6" target="_blank" rel="noopener noreferrer" class="text-xs font-condensed tracking-wider text-gold hover:underline uppercase">
+                若無法顯示請點此開新視窗填寫 ↗
+              </a>
+            </div>
+            <div class="w-full overflow-hidden rounded bg-white">
+              <iframe
+                src="https://docs.google.com/forms/d/e/1FAIpQLSd31DaYw_V51LLOESFR2XobL9M038ifFgOFqVIuhWyHUfJIfg/viewform?embedded=true"
+                width="100%"
+                height="560"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0"
+                title="B'z 樂迷留言板表單">
+                載入表單中…
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Messages Wall Container -->
+          <div id="guestbookList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="col-span-full bg-jet-900/60 border border-jet-700 p-8 text-center text-zinc-400 text-sm">
+              正在讀取樂迷留言中…
+            </div>
           </div>
         </div>
-      </div>
     </section>
   </main>
 
@@ -2710,6 +2733,100 @@
     renderVideoWall('ALL');
   </script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<!-- ==================== GUESTBOOK GOOGLE SHEETS READER ==================== -->
+  <script>
+    const GUESTBOOK_SHEET_ID = '1Ao_s_iQa0OXGSEW21qskTsoD_ZWBsscl1UsztzW9_8A';
+    const GUESTBOOK_GID = '1485898312';
+
+    function toggleGuestbookForm() {
+      const panel = document.getElementById('guestbookFormPanel');
+      const btn = document.getElementById('toggleGuestbookFormBtn');
+      if (!panel || !btn) return;
+      const isHidden = panel.classList.contains('hidden');
+      if (isHidden) {
+        panel.classList.remove('hidden');
+        btn.textContent = '✕ 收起留言表單';
+      } else {
+        panel.classList.add('hidden');
+        btn.textContent = '✎ 我要留言（免登入）';
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    async function loadGuestbookMessages(manualRefresh = false) {
+      const listEl = document.getElementById('guestbookList');
+      const countEl = document.getElementById('guestbookCount');
+      if (!listEl) return;
+
+      if (manualRefresh) {
+        listEl.innerHTML = `<div class="col-span-full bg-jet-900/60 border border-jet-700 p-8 text-center text-zinc-400 text-sm">正在更新最新留言…</div>`;
+      }
+
+      try {
+        const url = `https://docs.google.com/spreadsheets/d/${GUESTBOOK_SHEET_ID}/gviz/tq?tqx=out:json&gid=${GUESTBOOK_GID}&t=${Date.now()}`;
+        const res = await fetch(url);
+        const text = await res.text();
+        const jsonMatch = text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\);?/);
+        if (!jsonMatch) throw new Error('Invalid sheet format');
+
+        const data = JSON.parse(jsonMatch[1]);
+        const rows = (data.table && data.table.rows) ? data.table.rows : [];
+
+        // 過濾掉沒有填寫暱稱與留言的空列，並將最新留言排在最前面
+        const messages = rows.map(r => {
+          const c = r.c || [];
+          const timeVal = c[0] ? (c[0].f || c[0].v || '') : '';
+          const nameVal = c[1] && c[1].v ? String(c[1].v).trim() : '';
+          const songVal = c[2] && c[2].v ? String(c[2].v).trim() : '';
+          const msgVal  = c[3] && c[3].v ? String(c[3].v).trim() : '';
+          return { time: timeVal, name: nameVal, song: songVal, msg: msgVal };
+        }).filter(item => item.name || item.msg).reverse();
+
+        if (countEl) countEl.textContent = messages.length;
+
+        if (messages.length === 0) {
+          listEl.innerHTML = `
+            <div class="col-span-full bg-jet-900/60 border border-jet-700 p-8 text-center">
+              <p class="text-zinc-300 text-sm font-medium">目前還沒有留言，快點擊上方「✎ 我要留言（免登入）」搶下開站頭香吧！</p>
+            </div>
+          `;
+          return;
+        }
+
+        listEl.innerHTML = messages.map(m => `
+          <article class="bg-jet-900 border border-jet-700 hover:border-vermillion/70 transition-colors p-5 flex flex-col justify-between gap-3">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                <span class="font-bold text-white text-sm flex items-center gap-2">
+                  <span class="w-2 h-2 bg-vermillion inline-block"></span>
+                  ${escapeHtml(m.name || '匿名樂迷')}
+                </span>
+                ${m.song ? `<span class="bg-vermillion/15 border border-vermillion/40 text-vermillion-bright font-condensed text-[11px] font-bold tracking-wider px-2.5 py-0.5">♪ ${escapeHtml(m.song)}</span>` : ''}
+              </div>
+              <p class="text-zinc-200 text-sm leading-relaxed whitespace-pre-line">${escapeHtml(m.msg)}</p>
+            </div>
+            ${m.time ? `<div class="text-[11px] font-condensed tracking-wider text-zinc-500 pt-2 border-t border-jet-800">${escapeHtml(m.time)}</div>` : ''}
+          </article>
+        `).join('');
+      } catch (err) {
+        listEl.innerHTML = `
+          <div class="col-span-full bg-jet-900/60 border border-jet-700 p-6 text-center text-zinc-400 text-sm">
+            目前無法讀取試算表留言，請確認 Google 試算表共用權限已設為「知道連結的任何人（檢視者）」。
+          </div>
+        `;
+      }
+    }
+
+    loadGuestbookMessages();
+  </script>
 </body>
 </html>
 
