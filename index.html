@@ -918,6 +918,36 @@
             </p>
           </div>
 
+          
+          <!-- ==================== VIDEO ARCHIVE & LIVE-GYM WALL ==================== -->
+        <div class="mt-20 pt-14 border-t border-jet-700">
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
+            <div>
+              <p class="font-condensed text-xs font-bold tracking-[0.25em] text-vermillion uppercase mb-1">
+                OFFICIAL MV &amp; LIVE-GYM PERFORMANCES
+              </p>
+              <h3 class="font-display font-black italic text-2xl sm:text-3xl text-white tracking-wider uppercase">
+                CLASSIC VIDEO WALL
+              </h3>
+            </div>
+            <p class="text-xs sm:text-sm text-zinc-400">
+              目前顯示 <span id="videoCountText" class="text-white font-bold">26</span> 部精選映像・點擊縮圖立即播放
+            </p>
+          </div>
+
+          <!-- Video Category Filter Tabs -->
+          <div class="flex flex-wrap items-center gap-2.5 mb-8">
+            <button type="button" onclick="filterVideos('ALL', this)" class="video-filter-btn px-4 py-2 font-condensed text-xs font-bold tracking-[0.18em] uppercase border transition-colors bg-vermillion text-white border-vermillion">
+              全部映像 (26)
+            </button>
+            <button type="button" onclick="filterVideos('LIVE', this)" class="video-filter-btn px-4 py-2 font-condensed text-xs font-bold tracking-[0.18em] uppercase border transition-colors bg-jet-850 text-zinc-300 border-jet-700 hover:border-vermillion hover:text-white">
+              LIVE-GYM 現場 (13)
+            </button>
+            <button type="button" onclick="filterVideos('MV', this)" class="video-filter-btn px-4 py-2 font-condensed text-xs font-bold tracking-[0.18em] uppercase border transition-colors bg-jet-850 text-zinc-300 border-jet-700 hover:border-vermillion hover:text-white">
+              官方 MV &amp; 精選 (13)
+            </button>
+          </div>
+
           <!-- Video Grid Container (Rendered by JS) -->
           <div id="videoArchiveGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
