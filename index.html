@@ -1650,9 +1650,9 @@
       list.innerHTML = chronicles.map((item, idx) => `
         <article onclick="openChronicleModal(${idx})" class="group py-5 sm:py-6 px-3 sm:px-5 hover:bg-jet-850 transition-colors cursor-pointer flex flex-col md:flex-row md:items-center justify-between gap-3 sm:gap-6">
           <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 flex-1">
-            <div class="flex items-center gap-3 shrink-0">
-              <time class="font-condensed text-sm sm:text-base font-bold tracking-wider text-zinc-400 w-24">${item.date}</time>
-              <span class="bg-vermillion text-white font-condensed font-bold text-[11px] tracking-[0.16em] px-2.5 py-0.5 uppercase">
+            <div class="flex items-center gap-3 shrink-0 sm:w-72">
+              <time class="font-condensed text-sm sm:text-base font-bold tracking-wider text-zinc-400 w-24 shrink-0">${item.date}</time>
+              <span class="bg-vermillion text-white font-condensed font-bold text-[11px] tracking-[0.16em] px-2.5 py-0.5 uppercase whitespace-nowrap">
                 ${item.tag}
               </span>
             </div>
