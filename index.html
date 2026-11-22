@@ -2580,39 +2580,46 @@
 <!-- ==================== MEDIA VIDEO WALL SCRIPT ==================== -->
   <script>
     const bzVideos = [
-      { id: 'ubMjs4Y9S4U', tag: 'LIVE-GYM 1991', title: "SAFETY LOVE（B'z LIVE-GYM \"Pleasure'91\"）" },
-      { id: 'RPF9wZcP-dQ', tag: 'EARLY CLASSIC', title: "B'z / BAD COMMUNICATION" },
-      { id: 'dGsKfwRl-Og', tag: '1991 BALLAD', title: "B'z / もう一度キスしたかった（好想再親吻妳一次）" },
-      { id: 'X75RFHr-_qU', tag: 'BALLAD MEDLEY', title: "B'z『愛しい人よ Good Night...』『ALONE』『月光』" },
-      { id: 'fqORCPbbRHw', tag: '90S GROOVE', title: "B'z - Wonderful Opportunity" },
-      { id: 'jkoNbb62jZ8', tag: 'PLEASURE 2018', title: "B'z - BLOWIN'（LIVE-GYM Pleasure 2018 -HINOTORI-）" },
-      { id: 'QZFEnfBmfqg', tag: 'WINTER CLASSIC', title: "B'z - いつかのメリークリスマス（不知何時的聖誕節）" },
-      { id: 'Tqsp2-Lfvs0', tag: 'LIVE ARCHIVE', title: "B'z / RUN（經典現場映像集）" },
-      { id: 'KYt9Ya6Zj4o', tag: 'PLEASURE 2018', title: "B'z - Love Me, I Love You（Pleasure 2018 HINOTORI）" },
-      { id: 'g5HFOlCkz0I', tag: 'SHIBUYA-AX LIVE', title: "B'z / Liar! Liar!（1DAY LIVE at SHIBUYA-AX）" },
-      { id: 'DYSqfosxmMc', tag: '1998 SPEED ROCK', title: "B'z / さまよえる蒼い弾丸（徬徨的青色彈丸）" },
-      { id: '7bDoylfFBPk', tag: 'UNITE #01', title: "B'z / ギリギリchop（B'z presents UNITE #01）" },
-      { id: 'kCL0_yX8LB0', tag: '2000 LIVE', title: "B'z - 今夜月の見える丘に（LIVE）" },
-      { id: 'plDfbcm8rDQ', tag: 'LIVE-GYM 2002', title: "B'z / ultra soul（LIVE-GYM 2002 GREEN）" },
-      { id: 'QpNEmeAbW7Y', tag: '2005 BALLAD', title: "B'z - OCEAN（Full ver.）" },
-      { id: 'SGegRnLfDg8', tag: '2007 ACTION', title: "B'z / 光芒（Lyrics Video）" },
-      { id: 'ozZNOF-WJqU', tag: '20TH ANNIVERSARY', title: "B'z / ultra soul（Pleasure 2008 -GLORY DAYS-）" },
-      { id: '91NgURexzQM', tag: 'DRAMA THEME', title: "B'z - イチブトゼンブ（日劇《零秒出手》主題曲）" },
-      { id: '5h_Ks9IkptQ', tag: 'OFFICIAL MV', title: "B'z / C'mon（Official Music Video）" },
-      { id: '9zWKogXzDoU', tag: 'OFFICIAL MV', title: "B'z / 有頂天（Official Music Video）" },
-      { id: 'wO-Dvsg0w2M', tag: 'OFFICIAL MV', title: "B'z / CHAMP（Album「DINOSAUR」）" },
-      { id: 'OxnzZqisYTg', tag: '30TH HINOTORI', title: "B'z / ultra soul（Pleasure 2018 -HINOTORI-）" },
-      { id: 'fhoHMNKa610', tag: '5 ERAS 8820', title: "B'z Live from AVACO STUDIO “ALONE”" },
-      { id: 'HiUe4xuzlXs', tag: 'UNITE #01 SPECIAL', title: "Mr.Children × B'z / Everything (It's you)" },
-      { id: 'ZgRPDC4xE4A', tag: '35TH STARS', title: "B'z / LOVE PHANTOM（Pleasure 2023 -STARS-）" },
-      { id: 'm6vDjEA_JYk', tag: '2025 NEW MV', title: "B'z / 鞭（日劇《インフォーマ》主題歌 Official MV）" }
+      { id: 'ubMjs4Y9S4U', cat: 'LIVE', tag: 'LIVE-GYM 1991', title: "SAFETY LOVE（B'z LIVE-GYM \"Pleasure'91\"）" },
+      { id: 'RPF9wZcP-dQ', cat: 'MV', tag: 'EARLY CLASSIC', title: "B'z / BAD COMMUNICATION" },
+      { id: 'dGsKfwRl-Og', cat: 'MV', tag: '1991 BALLAD', title: "B'z / もう一度キスしたかった（好想再親吻妳一次）" },
+      { id: 'X75RFHr-_qU', cat: 'MV', tag: 'BALLAD MEDLEY', title: "B'z『愛しい人よ Good Night...』『ALONE』『月光』" },
+      { id: 'fqORCPbbRHw', cat: 'MV', tag: '90S GROOVE', title: "B'z - Wonderful Opportunity" },
+      { id: 'jkoNbb62jZ8', cat: 'LIVE', tag: 'PLEASURE 2018', title: "B'z - BLOWIN'（LIVE-GYM Pleasure 2018 -HINOTORI-）" },
+      { id: 'QZFEnfBmfqg', cat: 'MV', tag: 'WINTER CLASSIC', title: "B'z - いつかのメリークリスマス（不知何時的聖誕節）" },
+      { id: 'Tqsp2-Lfvs0', cat: 'LIVE', tag: 'LIVE ARCHIVE', title: "B'z / RUN（經典現場映像集）" },
+      { id: 'KYt9Ya6Zj4o', cat: 'LIVE', tag: 'PLEASURE 2018', title: "B'z - Love Me, I Love You（Pleasure 2018 HINOTORI）" },
+      { id: 'g5HFOlCkz0I', cat: 'LIVE', tag: 'SHIBUYA-AX LIVE', title: "B'z / Liar! Liar!（1DAY LIVE at SHIBUYA-AX）" },
+      { id: 'DYSqfosxmMc', cat: 'MV', tag: '1998 SPEED ROCK', title: "B'z / さまよえる蒼い弾丸（徬徨的青色彈丸）" },
+      { id: '7bDoylfFBPk', cat: 'LIVE', tag: 'UNITE #01', title: "B'z / ギリギリchop（B'z presents UNITE #01）" },
+      { id: 'kCL0_yX8LB0', cat: 'LIVE', tag: '2000 LIVE', title: "B'z - 今夜月の見える丘に（LIVE）" },
+      { id: 'plDfbcm8rDQ', cat: 'LIVE', tag: 'LIVE-GYM 2002', title: "B'z / ultra soul（LIVE-GYM 2002 GREEN）" },
+      { id: 'QpNEmeAbW7Y', cat: 'MV', tag: '2005 BALLAD', title: "B'z - OCEAN（Full ver.）" },
+      { id: 'SGegRnLfDg8', cat: 'MV', tag: '2007 ACTION', title: "B'z / 光芒（Lyrics Video）" },
+      { id: 'ozZNOF-WJqU', cat: 'LIVE', tag: '20TH ANNIVERSARY', title: "B'z / ultra soul（Pleasure 2008 -GLORY DAYS-）" },
+      { id: '91NgURexzQM', cat: 'MV', tag: 'DRAMA THEME', title: "B'z - イチブトゼンブ（日劇《零秒出手》主題曲）" },
+      { id: '5h_Ks9IkptQ', cat: 'MV', tag: 'OFFICIAL MV', title: "B'z / C'mon（Official Music Video）" },
+      { id: '9zWKogXzDoU', cat: 'MV', tag: 'OFFICIAL MV', title: "B'z / 有頂天（Official Music Video）" },
+      { id: 'wO-Dvsg0w2M', cat: 'MV', tag: 'OFFICIAL MV', title: "B'z / CHAMP（Album「DINOSAUR」）" },
+      { id: 'OxnzZqisYTg', cat: 'LIVE', tag: '30TH HINOTORI', title: "B'z / ultra soul（Pleasure 2018 -HINOTORI-）" },
+      { id: 'fhoHMNKa610', cat: 'LIVE', tag: '5 ERAS 8820', title: "B'z Live from AVACO STUDIO “ALONE”" },
+      { id: 'HiUe4xuzlXs', cat: 'LIVE', tag: 'UNITE #01 SPECIAL', title: "Mr.Children × B'z / Everything (It's you)" },
+      { id: 'ZgRPDC4xE4A', cat: 'LIVE', tag: '35TH STARS', title: "B'z / LOVE PHANTOM（Pleasure 2023 -STARS-）" },
+      { id: 'm6vDjEA_JYk', cat: 'MV', tag: '2025 NEW MV', title: "B'z / 鞭（日劇《インフォーマ》主題歌 Official MV）" }
     ];
 
-    function renderVideoWall() {
+    function renderVideoWall(category = 'ALL') {
       const grid = document.getElementById('videoArchiveGrid');
+      const countText = document.getElementById('videoCountText');
       if (!grid) return;
 
-      grid.innerHTML = bzVideos.map(v => `
+      const filtered = category === 'ALL'
+        ? bzVideos
+        : bzVideos.filter(v => v.cat === category);
+
+      if (countText) countText.textContent = filtered.length;
+
+      grid.innerHTML = filtered.map(v => `
         <article class="group bg-jet-900 border border-jet-700 hover:border-vermillion transition-colors overflow-hidden flex flex-col">
           <div id="video-slot-${v.id}" onclick="playArchiveVideo('${v.id}')" class="relative aspect-video bg-black cursor-pointer overflow-hidden">
             <img src="https://i.ytimg.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy" class="w-full h-full object-cover opacity-90 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500">
@@ -2635,11 +2642,22 @@
       `).join('');
     }
 
+    function filterVideos(category, btnEl) {
+      document.querySelectorAll('.video-filter-btn').forEach(btn => {
+        btn.classList.remove('bg-vermillion', 'text-white', 'border-vermillion');
+        btn.classList.add('bg-jet-850', 'text-zinc-300', 'border-jet-700');
+      });
+      if (btnEl) {
+        btnEl.classList.remove('bg-jet-850', 'text-zinc-300', 'border-jet-700');
+        btnEl.classList.add('bg-vermillion', 'text-white', 'border-vermillion');
+      }
+      renderVideoWall(category);
+    }
+
     function playArchiveVideo(videoId) {
       const slot = document.getElementById('video-slot-' + videoId);
       if (!slot) return;
 
-      // 若左下/右下角的 SAFETY LOVE 播放器正在播，自動收合並停止聲音避免重疊
       const bgmBox = document.getElementById('ytBgmBox');
       const bgmMount = document.getElementById('ytBgmMount');
       if (bgmBox && bgmMount && bgmMount.innerHTML !== '') {
@@ -2661,7 +2679,7 @@
       `;
     }
 
-    renderVideoWall();
+    renderVideoWall('ALL');
   </script>
 </body>
 </html>
