@@ -512,7 +512,7 @@
         <!-- Filter Category Tabs (Sharp Square Corners) -->
         <div id="categoryTabs" class="flex flex-wrap gap-2 sm:gap-2.5 mb-8 pb-5 border-b border-jet-700">
           <button data-cat="ALL" class="tab-btn active px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-vermillion text-white border border-vermillion transition-all">
-            全部 (70)
+            全部 (79)
           </button>
           <button data-cat="TOP_MASTERPIECE" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
             ★ 最高傑作與神專
@@ -525,6 +525,9 @@
           </button>
           <button data-cat="POST_2000" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
             2000 後精選
+          </button>
+          <button data-cat="BEST_ALBUMS" class="tab-btn px-4 py-2.5 text-xs sm:text-sm font-bold tracking-wide bg-jet-850 text-zinc-300 border border-jet-700 hover:border-vermillion transition-all">
+            精選輯
           </button>
         </div>
 
@@ -1286,18 +1289,7 @@
 
    // 3. Complete 70 Tracks & Albums Dataset (Sorted Chronologically 1989 - 2017)
     const tracks = [
-      {
-        id: 'bad-comm-estyle',
-        title: 'BAD COMMUNICATION (E.STYLE)',
-        year: '1989',
-        type: '最高傑作 / 隱藏神曲',
-        category: 'EARLY_ELECTRO',
-        isMasterpiece: true,
-        badge: '最高傑作 #1',
-        sales: '1989 迷你專輯重編版',
-        comment: 'B\'z 最高傑作個人認為是〈BAD COMMUNICATION (E.STYLE)〉，這首隱藏神曲是 1989 年迷你專輯 BAD COMMUNICATION 重新編曲出現，保有 B\'z 早期電子搖滾的風格，相當動聽。',
-        defaultFav: true
-      },
+      
       {
         id: 'lady-go-round',
         title: 'LADY-GO-ROUND',
@@ -1719,6 +1711,18 @@
         defaultFav: false
       },
       {
+        id: 'bad-comm-estyle',
+        title: 'BAD COMMUNICATION (E.STYLE)',
+        year: '1998',
+        type: '最高傑作 / 隱藏神曲',
+        category: 'EARLY_ELECTRO',
+        isMasterpiece: true,
+        badge: '最高傑作 #1',
+        sales: '1989 迷你專輯重編版',
+        comment: 'B\'z 最高傑作個人認為是〈BAD COMMUNICATION (E.STYLE)〉，這首隱藏神曲是 1989 年迷你專輯 BAD COMMUNICATION 重新編曲出現，保有 B\'z 早期電子搖滾的風格，相當動聽。',
+        defaultFav: true
+      },
+      {
         id: 'home-single',
         title: 'HOME',
         year: '1998',
@@ -2069,13 +2073,13 @@
       {
         id: 'utopia',
         title: '烏托邦',
-        year: '2012',
+        year: '2013',
         type: '精選輯《B\'z The Best XXV 1999-2012》收錄',
         category: 'POST_2000',
         isMasterpiece: false,
         badge: 'BEST XXV 收錄',
-        sales: '2012《B\'z The Best XXV 1999-2012》',
-        comment: '2012 年收錄在精選輯《B\'z The Best XXV 1999-2012》的名曲，旋律明亮動聽。',
+        sales: '2013《B\'z The Best XXV 1999-2012》',
+        comment: '2013 年收錄在精選輯《B\'z The Best XXV 1999-2012》的名曲，旋律明亮動聽。',
         defaultFav: false
       },
       {
@@ -2125,6 +2129,115 @@
         sales: '收錄於 2017《DINOSAUR》',
         comment: '收錄於 2017 年第 20 張原創專輯《DINOSAUR》的史詩級抒情搖滾大作。超過七分鐘的宏大篇幅，描繪黃昏天際變幻的色彩與深刻情感，是 B\'z 出道 30 週年前夕極具代表性的後期經典。',
         defaultFav: true
+      },
+    // === 1998–2013 精選輯系列 (9 張) ===
+      {
+        id: 'bz-the-best-pleasure-1998',
+        title: 'B\'z The Best "Pleasure"（金色精選）',
+        year: '1998',
+        type: '10 週年紀念超級精選',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: true,
+        badge: '1998 500萬神專',
+        sales: '1998.05.20 發行・累計破 500 萬枚',
+        comment: '慶祝出道 10 週年推出的「金色精選」，集結〈ALONE〉、〈ZERO〉、〈愛のままにわがままに 僕は君だけを傷つけない〉、〈LOVE PHANTOM〉等 90 年代最巔峰的百萬冠軍單曲，首週狂賣 270 萬張、累計突破 500 萬張。整張專輯毫無冷場，每一首都是橫掃時代的國民級搖滾聖經。',
+        defaultFav: true
+      },
+      {
+        id: 'bz-the-best-treasure-1998',
+        title: 'B\'z The Best "Treasure"（銀色精選）',
+        year: '1998',
+        type: '10 週年歌迷票選精選',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: true,
+        badge: '1998 千萬神話',
+        sales: '1998.09.20 發行・與金色精選合計破千萬枚',
+        comment: '由歌迷投票選曲誕生的「銀色精選」，以當年未收錄於原創專輯的〈BLOWIN\'〉震撼開場，並收錄〈TIME〉、〈恋心(KOI-GOKORO)〉、〈看不見的力量～INVISIBLE ONE～〉與新錄曲〈RUN -1998 style-〉。與《Pleasure》合計賣破約 1,000 萬張，補完了所有黃金年代的必收遺珠。',
+        defaultFav: true
+      },
+      {
+        id: 'bz-the-mixture-2000',
+        title: 'B\'z The "Mixture"（裏精選輯）',
+        year: '2000',
+        type: '裏精選・未發表與重混音盤',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: true,
+        badge: '2000 必收裏精選',
+        sales: '2000.02.23 發行・百萬銷量裏精選',
+        comment: '被樂迷譽為「裏精選」的特殊企劃盤，網羅 90 年代單曲 2nd beat 隱藏神曲（如〈だからその手を離して -Mixture style-〉、〈You & I〉、〈Never Let You Go〉、〈JOY〉、〈孤独のRunaway〉重錄版）、〈MOVE〉及未發表曲〈あなたならかまわない〉。完美展現B\'z在主打歌之外同樣深不可測的硬搖滾與編曲實力。',
+        defaultFav: true
+      },
+      {
+        id: 'the-ballads-love-and-bz-2002',
+        title: 'The Ballads ～Love & B\'z～（抒情精選輯）',
+        year: '2002',
+        type: '首張抒情主題精選輯',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: false,
+        badge: '2002 抒情精選',
+        sales: '2002.12.11 發行・百萬銷量精選',
+        comment: 'B\'z 生涯首張抒情主題精選輯，從早期純愛名曲〈いつかのメリークリスマス〉、〈もう一度キスしたかった〉、〈ALONE〉，一路收錄至〈今夜月の見える丘に〉、〈RING〉與〈GOLD〉。將稻葉浩志深情細膩的嗓音與松本孝弘極具泣訴力的吉他獨奏濃縮於一盤，是冬夜裡最耐聽的經典之作。',
+        defaultFav: false
+      },
+      {
+        id: 'bz-the-best-pleasure-2-2005',
+        title: 'B\'z The Best "Pleasure II"（紅色精選）',
+        year: '2005',
+        type: '1998–2005 單曲精選輯',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: false,
+        badge: '2005 紅色精選',
+        sales: '2005.11.30 發行・百萬銷量精選',
+        comment: '俗稱「紅色精選」，完整收錄 1998 年《Pleasure》發行後至 2005 年間的所有冠軍單曲，包含〈HOME〉、〈ギリギリchop〉、〈ultra soul〉、〈熱き鼓動の果て〉、〈IT\'S SHOWTIME!!〉與〈OCEAN〉。見證 B\'z 從 90 年代末期跨入 21 世紀初的搖滾進化與舞台爆發力。',
+        defaultFav: false
+      },
+      {
+        id: 'bz-the-best-ultra-pleasure-2008',
+        title: 'B\'z The Best "ULTRA Pleasure"（20 週年白金精選）',
+        year: '2008',
+        type: '20 週年雙 CD 單曲精選',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: false,
+        badge: '2008 20TH 精選',
+        sales: '2008.06.18 發行・20 週年紀念盤',
+        comment: '紀念成軍 20 週年推出的雙 CD 豪華精選，完整橫跨 1988 年出道作〈だからその手を離して〉到 2008 年〈BURN -フメツノフェイス-〉共 30 首代表性單曲，並特別收錄〈BAD COMMUNICATION -ULTRA Pleasure Style-〉與〈Pleasure 2008 ～人生の快楽～〉全新重錄版。',
+        defaultFav: false
+      },
+      {
+        id: 'bz-the-best-ultra-treasure-2008',
+        title: 'B\'z The Best "ULTRA Treasure"（20 週年歌迷票選精選）',
+        year: '2008',
+        type: '20 週年歌迷票選 Top 30',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: true,
+        badge: '2008 票選 TOP 30',
+        sales: '2008.09.17 發行・40 萬票選紀念盤',
+        comment: '集結超過 40 萬張歌迷投票選出的 30 首非主打與人氣名曲，涵蓋〈Brotherhood〉、〈月光〉、〈恋心(KOI-GOKORO)〉、〈ONE〉、〈RUN〉及全新錄製的〈いつかのメリークリスマス ～「恋するハニカミ!」バージョン～〉。充分證明 B\'z 真正讓死忠樂迷著迷的靈魂都在專輯曲與 2nd beat 之中。',
+        defaultFav: true
+      },
+      {
+        id: 'bz-the-best-xxv-1988-1998-2013',
+        title: 'B\'z The Best XXV 1988–1998（25 週年全單曲精選 I）',
+        year: '2013',
+        type: '25 週年全單曲編年精選',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: false,
+        badge: '2013 25TH 上卷',
+        sales: '2013.06.12 發行・收錄 26 首單曲＋2 首新曲',
+        comment: '紀念出道 25 週年發行的全單曲編年精選上卷，依時間軸完整收錄從 1988 年首張單曲至 1998 年〈HOME〉共 26 首 A 面單曲，並額外收錄兩首新曲〈HEAT〉（為金賢重創作曲之自我翻唱版）與〈核心〉。一步步重現 B\'z 稱霸 90 年代日本樂壇的完整軌跡。',
+        defaultFav: false
+      },
+      {
+        id: 'bz-the-best-xxv-1999-2012-2013',
+        title: 'B\'z The Best XXV 1999–2012（25 週年全單曲精選 II）',
+        year: '2013',
+        type: '25 週年全單曲編年精選',
+        category: 'BEST_ALBUMS',
+        isMasterpiece: false,
+        badge: '2013 25TH 下卷',
+        sales: '2013.06.12 發行・收錄 26 首單曲＋2 首新曲',
+        comment: '與上卷同步發行的 25 週年全單曲編年精選下卷，完整收錄 1999 年〈ギリギリchop〉至 2012 年〈GO FOR IT, BABY -キオクの山脈-〉共 26 首單曲，並加收新曲〈Q&A〉與〈ユートピア〉。與《1988–1998》共同構成 B\'z 前 25 年最完整的單曲歷史檔案。',
+        defaultFav: false
       },
     ];
     // ==================== STATE MANAGEMENT ====================
